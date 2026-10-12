@@ -1,0 +1,13 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "gameinguniversal947-beep.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "gameinguniversal947-beep.github",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "description": "Match your voice with your favorite celebrities! Speak into the microphone and discover which celebrity voice matches yours",
+  "id": "/"
+}
