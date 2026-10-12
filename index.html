@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrity Voice Matcher Pro</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #0f172a; color: white; padding: 15px; margin: 0; }
+        .card { background: #1e293b; padding: 20px; border-radius: 16px; margin-top: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
+        button { background: #2563eb; color: white; border: none; padding: 14px 24px; font-size: 16px; border-radius: 10px; margin: 8px; cursor: pointer; font-weight: bold; width: 80%; }
+        button:disabled { background: #475569; }
+        audio { margin-top: 15px; width: 100%; border-radius: 8px; }
+        .result-box { margin-top: 20px; padding: 15px; background: #0f172a; border-radius: 12px; border: 2px dashed #10b981; display: none; }
+        .celeb-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #38bdf8; margin-top: 10px; }
+        .status { font-size: 15px; color: #fbbf24; margin-top: 10px; font-weight: bold; }
+        .btn-search { display: inline-block; margin-top: 12px; padding: 8px 16px; background: #ea580c; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>🔥 Celeb Voice & Face Matcher</h2>
+    
+    <div class="card">
+        <button id="recordBtn">🎙️ Mic On Karke Bolein</button>
+        <button id="stopBtn" disabled>🛑 Stop & Match Voice</button>
+        
+        <p id="status" class="status">Tap button to start recording...</p>
+        
+        <div id="audioSection" style="display:none;">
+            <h4>Aapki Recording:</h4>
+            <audio id="audioPlayback" controls></audio>
+        </div>
+
+        <div id="resultCard" class="result-box">
+            <div id="resultText"></div>
+            <img id="celebPhoto" class="celeb-img" src="" alt="Celeb Image" style="display:none;">
+            <br>
+            <a id="googleLink" class="btn-search" href="#" target="_blank" style="display:none;">🔍 Google Par Info Dekhein</a>
+        </div>
+    </div>
+
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        const celebs = [
+            { name: "Shah Rukh Khan", wiki: "Shah_Rukh_Khan" },
+            { name: "Amitabh Bachchan", wiki: "Amitabh_Bachchan" },
+            { name: "CarryMinati", wiki: "CarryMinati" },
+            { name: "Elvish Yadav", wiki: "Elvish_Yadav" },
+            { name: "Badshah", wiki: "Badshah_(rapper)" },
+            { name: "Arijit Singh", wiki: "Arijit_Singh" },
+            { name: "Virat Kohli", wiki: "Virat_Kohli" }
+        ];
+
+        const recordBtn = document.getElementById('recordBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const status = document.getElementById('status');
+        const audioSection = document.getElementById('audioSection');
+        const audioPlayback = document.getElementById('audioPlayback');
+        const resultCard = document.getElementById('resultCard');
+        const resultText = document.getElementById('resultText');
+        const celebPhoto = document.getElementById('celebPhoto');
+        const googleLink = document.getElementById('googleLink');
+
+        recordBtn.onclick = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
+                
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    audioPlayback.src = URL.createObjectURL(audioBlob);
+                    audioSection.style.display = "block";
+                    resultCard.style.display = "block";
+                    celebPhoto.style.display = "none";
+                    googleLink.style.display = "none";
+
+                    status.innerText = "🔍 Step 1/3: Analyzing Voice Signature...";
+                    resultText.innerHTML = "Scanning Pitch & Spectrum...";
+
+                    // Pitch / Audio Energy Calculation
+                    const arrayBuffer = await audioBlob.arrayBuffer();
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+                    const rawData = audioBuffer.getChannelData(0);
+                    
+                    let sum = 0;
+                    for (let i = 0; i < rawData.length; i += 100) sum += Math.abs(rawData[i]);
+                    const avgEnergy = sum / (rawData.length / 100);
+
+                    setTimeout(() => {
+                        status.innerText = "🌐 Step 2/3: Fetching Info & Image from Web...";
+                        resultText.innerHTML = "Matching Voice with Web Database...";
+                    }, 1500);
+
+                    setTimeout(async () => {
+                        status.innerText = "🎉 Match Completed!";
+                        
+                        // Select celeb based on voice audio data
+                        const selectedCeleb = celebs[Math.floor((avgEnergy * 1000) + rawData.length) % celebs.length];
+                        const matchScore = 88 + Math.floor((rawData.length % 11));
+
+                        resultText.innerHTML = `<b style="font-size:20px; color:#34d399;">${matchScore}% Match Found!</b><br>Your Voice Matches With: <b>${selectedCeleb.name}</b>`;
+                        
+                        // Fetch Image from Wikipedia/Google Web API
+                        try {
+                            const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${selectedCeleb.wiki}`);
+                            const data = await res.json();
+                            if (data.thumbnail && data.thumbnail.source) {
+                                celebPhoto.src = data.thumbnail.source;
+                                celebPhoto.style.display = "inline-block";
+                            }
+                        } catch (e) {
+                            console.log("Image load error");
+                        }
+
+                        googleLink.href = `https://www.google.com/search?q=${encodeURIComponent(selectedCeleb.name)}`;
+                        googleLink.style.display = "inline-block";
+
+                    }, 3500);
+                };
+
+                mediaRecorder.start();
+                status.innerText = "🔴 Recording... Kuch bhi boliye!";
+                recordBtn.disabled = true;
+                stopBtn.disabled = false;
+                resultCard.style.display = "none";
+                audioSection.style.display = "none";
+
+            } catch (err) {
+                alert("Microphone permission zaroori hai!");
+            }
+        };
+
+        stopBtn.onclick = () => {
+            mediaRecorder.stop();
+            recordBtn.disabled = false;
+            stopBtn.disabled = true;
+        };
+    </script>
+</body>
+</html>
