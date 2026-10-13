@@ -37,7 +37,7 @@
                 <p id="appSubTitle" class="text-[10px] sm:text-xs text-white/80">AI Voice Pitch & Frequency Scanner</p>
             </div>
         </div>
-        <button onclick="alert('Universal Gaming & Voice App v6.0')" class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center active:scale-95 transition">
+        <button onclick="alert('Universal Gaming & Voice App v6.1')" class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center active:scale-95 transition">
             <i class="fa-solid fa-circle-info text-base"></i>
         </button>
     </header>
@@ -137,19 +137,19 @@
 
     </main>
 
-    <!-- FLOATING BOTTOM NAVIGATION BAR (3 TABS FIXED) -->
-    <nav class="fixed bottom-4 left-3 right-3 max-w-sm mx-auto bg-black/70 backdrop-blur-lg p-1.5 rounded-full border border-white/20 shadow-2xl flex items-center justify-between relative z-50">
-        <div id="navSlider" class="absolute w-[32%] h-[82%] bg-white/25 rounded-full transition-all duration-300 ease-in-out left-1"></div>
+    <!-- FLOATING BOTTOM NAVIGATION BAR (3 TABS FIXED STRICTLY) -->
+    <nav class="fixed bottom-4 left-2 right-2 max-w-sm mx-auto bg-black/80 backdrop-blur-lg p-1 rounded-full border border-white/20 shadow-2xl flex items-center justify-between relative z-50">
+        <div id="navSlider" class="absolute w-[32%] h-[85%] bg-white/25 rounded-full transition-all duration-300 ease-in-out left-0.5"></div>
         
-        <button onclick="switchTab('voice')" id="tabVoice" class="flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white font-bold text-[9px] tracking-wider transition">
+        <button onclick="switchTab('voice')" id="tabVoice" class="flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white font-bold text-[8px] tracking-wider transition">
             <i class="fa-solid fa-microphone-lines text-xs mb-0.5"></i>
             <span>VOICE</span>
         </button>
-        <button onclick="switchTab('meme')" id="tabMeme" class="flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[9px] tracking-wider transition">
+        <button onclick="switchTab('meme')" id="tabMeme" class="flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[8px] tracking-wider transition">
             <i class="fa-solid fa-masks-theater text-xs mb-0.5"></i>
             <span>MEME TALK</span>
         </button>
-        <button onclick="switchTab('music')" id="tabMusic" class="flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[9px] tracking-wider transition">
+        <button onclick="switchTab('music')" id="tabMusic" class="flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[8px] tracking-wider transition">
             <i class="fa-solid fa-music text-xs mb-0.5"></i>
             <span>MUSIC</span>
         </button>
@@ -157,7 +157,6 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Verified Unsplash Direct Image URLs for Celebrities
         const celebs = [
             { name: "Amitabh Bachchan", quote: "Rishte mein toh hum tumhare baap lagte hain!", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150" },
             { name: "Shah Rukh Khan", quote: "Picture abhi baaki hai mere dost!", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" },
@@ -192,17 +191,17 @@
             const appTitle = document.getElementById('appTitle');
             const appSubTitle = document.getElementById('appSubTitle');
 
-            tabVoice.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[9px] tracking-wider transition";
-            tabMeme.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[9px] tracking-wider transition";
-            tabMusic.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[9px] tracking-wider transition";
+            tabVoice.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[8px] tracking-wider transition";
+            tabMeme.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[8px] tracking-wider transition";
+            tabMusic.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white/70 font-bold text-[8px] tracking-wider transition";
 
             if(tab === 'voice') {
-                navSlider.style.left = '2px';
+                navSlider.style.left = '1px';
                 body.className = "bg-cyanTheme-bg min-h-screen w-screen flex flex-col justify-between pb-32 relative transition-all duration-500 font-sans text-white overflow-y-auto no-scrollbar";
                 screenVoice.classList.remove('hidden');
                 screenMeme.classList.add('hidden');
                 screenMusic.classList.add('hidden');
-                tabVoice.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white font-bold text-[9px] tracking-wider transition";
+                tabVoice.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white font-bold text-[8px] tracking-wider transition";
                 appTitle.innerText = "Celebrity Voice Matcher";
                 appSubTitle.innerText = "AI Voice Pitch & Frequency Scanner";
             } else if(tab === 'meme') {
@@ -211,16 +210,16 @@
                 screenMeme.classList.remove('hidden');
                 screenVoice.classList.add('hidden');
                 screenMusic.classList.add('hidden');
-                tabMeme.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white font-bold text-[9px] tracking-wider transition";
+                tabMeme.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white font-bold text-[8px] tracking-wider transition";
                 appTitle.innerText = "Bumblebee Meme Talker";
                 appSubTitle.innerText = "Transform Text into Radio Meme FX";
             } else {
-                navSlider.style.left = '66%';
+                navSlider.style.left = '67%';
                 body.className = "bg-purpleTheme-bg min-h-screen w-screen flex flex-col justify-between pb-32 relative transition-all duration-500 font-sans text-white overflow-y-auto no-scrollbar";
                 screenMusic.classList.remove('hidden');
                 screenVoice.classList.add('hidden');
                 screenMeme.classList.add('hidden');
-                tabMusic.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white font-bold text-[9px] tracking-wider transition";
+                tabMusic.className = "flex-1 py-2 text-center relative z-10 flex flex-col items-center justify-center text-white font-bold text-[8px] tracking-wider transition";
                 appTitle.innerText = "Bumblebee Music Player";
                 appSubTitle.innerText = "Radio Beats & Meme Soundtracks";
             }
@@ -293,4 +292,4 @@
             const memeSpokenText = document.getElementById('memeSpokenText');
 
             if(!input) {
-                a
+                alert("Please enter some text for Bumblebee to speak!")
