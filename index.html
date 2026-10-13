@@ -19,17 +19,6 @@
         }
     </script>
     <style>
-        .perspective-1000 { perspective: 1000px; }
-        .flip-card-inner {
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
-        }
-        .flipped { transform: rotateY(180deg) !important; }
-        .flip-card-front, .flip-card-back {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-        .flip-card-back { transform: rotateY(180deg); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -47,7 +36,7 @@
                 <p id="appSubTitle" class="text-[10px] sm:text-xs text-white/80">AI Voice Scanner & Funny Meme Audio Generator</p>
             </div>
         </div>
-        <button id="infoBtn" onclick="toggleInfoModal()" class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center active:scale-95 transition">
+        <button id="infoBtn" onclick="alert('Celebrity Voice Matcher v3.0')" class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center active:scale-95 transition">
             <i class="fa-solid fa-circle-info text-base"></i>
         </button>
     </header>
@@ -57,30 +46,29 @@
 
         <!-- VOICE MATCHER SCREEN -->
         <div id="screenVoiceMatcher" class="w-full max-w-sm flex flex-col items-center space-y-4 transition-all duration-300">
-            <!-- 3D Card Flip Avatar Box -->
-            <div class="w-full perspective-1000 my-2">
-                <div id="avatarCardInner" class="w-full h-48 relative flip-card-inner rounded-2xl shadow-xl border border-white/30 bg-white/10 backdrop-blur-md">
-                    
-                    <!-- FRONT: Default State -->
-                    <div class="flip-card-front absolute inset-0 w-full h-full flex flex-col items-center justify-center p-4">
-                        <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-3 border-2 border-white/40 shadow-md">
-                            <i class="fa-solid fa-robot text-3xl text-white"></i>
-                        </div>
-                        <h2 class="text-sm font-semibold tracking-wider">Tap Mic & Speak to Match</h2>
-                        <p class="text-[11px] text-white/70 mt-1">Real-time Audio Pitch & Frequency Scanner</p>
+            
+            <!-- Celebrity Card Box -->
+            <div class="w-full h-48 my-2 rounded-2xl shadow-xl border border-white/30 bg-white/10 backdrop-blur-md flex flex-col items-center justify-center p-4 relative overflow-hidden">
+                
+                <!-- DEFAULT STATE: Robot Icon -->
+                <div id="stateDefault" class="flex flex-col items-center justify-center">
+                    <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-2 border-2 border-white/40 shadow-md">
+                        <i class="fa-solid fa-robot text-3xl text-white"></i>
                     </div>
-
-                    <!-- BACK: Celebrity Matched State -->
-                    <div class="flip-card-back absolute inset-0 w-full h-full flex items-center p-4 bg-black/30 rounded-2xl">
-                        <img id="celebImg" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Celebrity" class="w-24 h-24 rounded-xl object-cover border-2 border-white/60 shadow-lg">
-                        <div class="ml-4 flex flex-col justify-center">
-                            <span class="text-[10px] uppercase tracking-widest text-yellow-300 font-bold">Matched Celebrity</span>
-                            <h3 id="celebName" class="text-lg font-extrabold mt-0.5">Alex Superstar</h3>
-                            <p id="celebQuote" class="text-xs italic text-white/90 mt-1">"Picture abhi baaki hai mere dost!"</p>
-                        </div>
-                    </div>
-
+                    <h2 class="text-sm font-semibold tracking-wider">Tap Mic & Speak to Match</h2>
+                    <p class="text-[11px] text-white/70 mt-0.5">Real-time Audio Pitch & Frequency Scanner</p>
                 </div>
+
+                <!-- MATCHED STATE: Celebrity Result -->
+                <div id="stateMatched" class="hidden w-full h-full flex items-center p-2 bg-black/20 rounded-xl">
+                    <img id="celebImg" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Celebrity" class="w-24 h-24 rounded-xl object-cover border-2 border-yellow-300 shadow-lg">
+                    <div class="ml-4 flex flex-col justify-center">
+                        <span class="text-[10px] uppercase tracking-widest text-yellow-300 font-bold">100% Match Found!</span>
+                        <h3 id="celebName" class="text-lg font-extrabold mt-0.5 text-white">Alex Superstar</h3>
+                        <p id="celebQuote" class="text-xs italic text-yellow-100 mt-1">"Picture abhi baaki hai mere dost!"</p>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Record Button Area -->
@@ -99,7 +87,7 @@
                     <span id="accuracyText" class="text-sm font-bold">0%</span>
                 </div>
                 <div class="w-full bg-black/20 rounded-full h-2.5 overflow-hidden p-0.5 border border-white/10">
-                    <div id="progressBar" class="bg-gradient-to-r from-yellow-400 to-amber-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                    <div id="progressBar" class="bg-gradient-to-r from-yellow-400 to-amber-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
                 </div>
                 <p id="statusMsg" class="text-[11px] text-white/70 mt-2 text-center">Awaiting audio input pitch analysis...</p>
             </div>
@@ -107,24 +95,29 @@
 
         <!-- TEXT TO MEME SCREEN -->
         <div id="screenTextMeme" class="w-full max-w-sm flex flex-col items-center space-y-4 hidden transition-all duration-300">
-            <!-- Meme Display Card (Appears on Generation) -->
-            <div id="memeDisplayCard" class="w-full h-40 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex flex-col items-center justify-center p-4 relative overflow-hidden transition-all duration-500">
-                <div id="memePlaceholder" class="flex flex-col items-center text-center">
-                    <i class="fa-solid fa-masks-theater text-3xl text-white/60 mb-2"></i>
-                    <p class="text-xs text-white/70">Type your text below & click generate to popup meme & speak!</p>
+            
+            <!-- Meme Card Box -->
+            <div id="memeBox" class="w-full h-44 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex flex-col items-center justify-center p-4 relative overflow-hidden">
+                <div id="memeDefault" class="flex flex-col items-center text-center">
+                    <i class="fa-solid fa-face-laugh-beam text-4xl text-white/70 mb-2"></i>
+                    <p class="text-xs text-white/80 font-medium">Type text below & hit Generate!</p>
                 </div>
-                <div id="memeContent" class="hidden flex flex-col items-center text-center space-y-2 animate-bounce">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120" alt="Meme Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-yellow-300 shadow-md">
-                    <h3 id="memeSpokenText" class="text-sm font-bold text-yellow-200 px-2 line-clamp-2">"Ram ram sareyana"</h3>
+                
+                <div id="memeActive" class="hidden flex items-center space-x-3 w-full bg-black/30 p-3 rounded-xl border border-yellow-300/50">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120" class="w-16 h-16 rounded-full object-cover border-2 border-yellow-300 shadow-md">
+                    <div class="flex-1">
+                        <span class="text-[10px] text-yellow-300 font-bold uppercase tracking-wider">Meme Speaking...</span>
+                        <p id="memeSpokenText" class="text-sm font-bold text-white mt-0.5">"Ram ram sareyane"</p>
+                    </div>
                 </div>
             </div>
 
             <div class="w-full bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/20 shadow-xl space-y-3">
-                <h2 class="text-sm font-bold tracking-wider flex items-center"><i class="fa-solid fa-face-laugh-squint mr-2"></i> Create Funny Meme Audio</h2>
+                <h2 class="text-sm font-bold tracking-wider flex items-center"><i class="fa-solid fa-masks-theater mr-2"></i> Create Funny Meme Audio</h2>
                 <textarea id="memeTextInput" rows="3" placeholder="Enter funny dialogue or text here..." class="w-full p-3 rounded-xl bg-black/20 border border-white/30 text-white placeholder-white/50 text-sm focus:outline-none focus:border-white"></textarea>
                 <button onclick="generateMemeAudio()" class="w-full py-3 rounded-xl bg-white/20 font-bold text-sm tracking-wider border border-white/40 shadow-md active:scale-98 transition flex items-center justify-center space-x-2">
                     <i class="fa-solid fa-volume-high"></i>
-                    <span>Generate Meme & Speak</span>
+                    <span>Generate & Play Audio</span>
                 </button>
             </div>
         </div>
@@ -133,7 +126,6 @@
 
     <!-- FLOATING BOTTOM NAVIGATION BAR -->
     <nav class="fixed bottom-4 left-4 right-4 max-w-sm mx-auto bg-black/40 backdrop-blur-lg p-1.5 rounded-full border border-white/20 shadow-2xl flex items-center justify-between relative z-50">
-        <!-- Sliding Background Pill -->
         <div id="navSlider" class="absolute w-[48%] h-[82%] bg-white/25 rounded-full transition-all duration-300 ease-in-out left-1.5"></div>
         
         <button onclick="switchTab('voice')" id="tabVoiceBtn" class="flex-1 py-2.5 text-center relative z-10 flex items-center justify-center space-x-2 text-white font-bold text-xs tracking-wider transition">
@@ -184,15 +176,18 @@
         }
 
         function startVoiceScan() {
-            const cardInner = document.getElementById('avatarCardInner');
+            const stateDefault = document.getElementById('stateDefault');
+            const stateMatched = document.getElementById('stateMatched');
             const progressBar = document.getElementById('progressBar');
             const accuracyText = document.getElementById('accuracyText');
             const statusMsg = document.getElementById('statusMsg');
             const micIcon = document.getElementById('micIcon');
             
-            cardInner.classList.remove('flipped');
+            // Reset
+            stateDefault.classList.remove('hidden');
+            stateMatched.classList.add('hidden');
             micIcon.className = "fa-solid fa-spinner fa-spin text-3xl text-white";
-            statusMsg.innerText = "Listening to your voice pitch & frequency...";
+            statusMsg.innerText = "Scanning voice pitch and frequencies...";
             
             let progress = 0;
             let interval = setInterval(() => {
@@ -204,42 +199,39 @@
                     clearInterval(interval);
                     micIcon.className = "fa-solid fa-microphone text-3xl text-white";
                     statusMsg.innerText = "Voice successfully matched!";
-                    cardInner.classList.add('flipped');
+                    
+                    // Show Celebrity Box cleanly
+                    stateDefault.classList.add('hidden');
+                    stateMatched.classList.remove('hidden');
                 }
-            }, 150);
+            }, 120);
         }
 
         function generateMemeAudio() {
             const textInput = document.getElementById('memeTextInput');
-            const text = textInput.value;
-            const memePlaceholder = document.getElementById('memePlaceholder');
-            const memeContent = document.getElementById('memeContent');
+            const text = textInput.value.trim();
+            const memeDefault = document.getElementById('memeDefault');
+            const memeActive = document.getElementById('memeActive');
             const memeSpokenText = document.getElementById('memeSpokenText');
 
-            if(!text.trim()) {
-                alert("Please enter some meme text first!");
+            if(!text) {
+                alert("Please type something first!");
                 return;
             }
 
-            // Show meme card animation
-            memePlaceholder.classList.add('hidden');
-            memeContent.classList.remove('hidden');
+            // Show Meme Active Box
+            memeDefault.classList.add('hidden');
+            memeActive.classList.remove('hidden');
             memeSpokenText.innerText = `"${text}"`;
 
-            // Speak out loud using phone speech synthesis
+            // Speak audio
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // stop previous speech if any
+                window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
-                utterance.pitch = 1.3; // funny higher pitch
+                utterance.pitch = 1.3;
                 utterance.rate = 1.0;
                 window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Text-to-speech not supported on this device.");
             }
-        }
-
-        function toggleInfoModal() {
-            alert("Celebrity Voice Matcher & Meme v2.5 - Dynamic Meme Popups & Voice Audio!");
         }
     </script>
 </body>
