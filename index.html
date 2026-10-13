@@ -36,7 +36,7 @@
                 <p id="appSubTitle" class="text-[10px] sm:text-xs text-white/80">AI Voice Scanner & Funny Meme Audio Generator</p>
             </div>
         </div>
-        <button id="infoBtn" onclick="alert('Celebrity Voice Matcher v3.0')" class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center active:scale-95 transition">
+        <button id="infoBtn" onclick="alert('Celebrity Voice Matcher v4.0')" class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center active:scale-95 transition">
             <i class="fa-solid fa-circle-info text-base"></i>
         </button>
     </header>
@@ -50,22 +50,22 @@
             <!-- Celebrity Card Box -->
             <div class="w-full h-48 my-2 rounded-2xl shadow-xl border border-white/30 bg-white/10 backdrop-blur-md flex flex-col items-center justify-center p-4 relative overflow-hidden">
                 
-                <!-- DEFAULT STATE: Robot Icon -->
-                <div id="stateDefault" class="flex flex-col items-center justify-center">
+                <!-- DEFAULT STATE -->
+                <div id="stateDefault" class="flex flex-col items-center justify-center text-center">
                     <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mb-2 border-2 border-white/40 shadow-md">
                         <i class="fa-solid fa-robot text-3xl text-white"></i>
                     </div>
                     <h2 class="text-sm font-semibold tracking-wider">Tap Mic & Speak to Match</h2>
-                    <p class="text-[11px] text-white/70 mt-0.5">Real-time Audio Pitch & Frequency Scanner</p>
+                    <p class="text-[11px] text-white/70 mt-0.5">Bolne par hi real AI match niklega!</p>
                 </div>
 
-                <!-- MATCHED STATE: Celebrity Result -->
-                <div id="stateMatched" class="hidden w-full h-full flex items-center p-2 bg-black/20 rounded-xl">
-                    <img id="celebImg" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Celebrity" class="w-24 h-24 rounded-xl object-cover border-2 border-yellow-300 shadow-lg">
+                <!-- MATCHED STATE -->
+                <div id="stateMatched" class="hidden w-full h-full flex items-center p-2 bg-black/30 rounded-xl">
+                    <img id="celebImg" src="" alt="Celebrity" class="w-24 h-24 rounded-xl object-cover border-2 border-yellow-300 shadow-lg">
                     <div class="ml-4 flex flex-col justify-center">
-                        <span class="text-[10px] uppercase tracking-widest text-yellow-300 font-bold">100% Match Found!</span>
-                        <h3 id="celebName" class="text-lg font-extrabold mt-0.5 text-white">Alex Superstar</h3>
-                        <p id="celebQuote" class="text-xs italic text-yellow-100 mt-1">"Picture abhi baaki hai mere dost!"</p>
+                        <span id="matchScoreText" class="text-[10px] uppercase tracking-widest text-yellow-300 font-bold">95% Match Found!</span>
+                        <h3 id="celebName" class="text-lg font-extrabold mt-0.5 text-white">Celebrity Name</h3>
+                        <p id="celebQuote" class="text-xs italic text-yellow-100 mt-1">"Dialogue Quote"</p>
                     </div>
                 </div>
 
@@ -73,51 +73,51 @@
 
             <!-- Record Button Area -->
             <div class="flex flex-col items-center">
-                <button id="recordBtn" onclick="startVoiceScan()" class="w-24 h-24 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 flex flex-col items-center justify-center shadow-2xl border-4 border-white/40 active:scale-95 transition-transform duration-200">
+                <button id="recordBtn" onclick="toggleVoiceRecognition()" class="w-24 h-24 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 flex flex-col items-center justify-center shadow-2xl border-4 border-white/40 active:scale-95 transition-transform duration-200">
                     <i id="micIcon" class="fa-solid fa-microphone text-3xl text-white"></i>
-                    <span class="text-[10px] font-bold tracking-widest mt-1 text-white">RECORD</span>
+                    <span id="recordBtnText" class="text-[10px] font-bold tracking-widest mt-1 text-white">SPEAK</span>
                 </button>
-                <span class="text-xs font-medium text-white/80 mt-2 tracking-wide">PRESS MIC & SPEAK</span>
+                <span id="micHint" class="text-xs font-medium text-white/80 mt-2 tracking-wide">TAP MIC & SAY SOMETHING</span>
             </div>
 
             <!-- Accuracy Meter -->
             <div class="w-full bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-lg">
                 <div class="flex justify-between items-center mb-1.5">
-                    <span class="text-xs font-semibold tracking-wide">Match Accuracy</span>
+                    <span class="text-xs font-semibold tracking-wide">Voice Pitch Detection</span>
                     <span id="accuracyText" class="text-sm font-bold">0%</span>
                 </div>
                 <div class="w-full bg-black/20 rounded-full h-2.5 overflow-hidden p-0.5 border border-white/10">
                     <div id="progressBar" class="bg-gradient-to-r from-yellow-400 to-amber-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
                 </div>
-                <p id="statusMsg" class="text-[11px] text-white/70 mt-2 text-center">Awaiting audio input pitch analysis...</p>
+                <p id="statusMsg" class="text-[11px] text-white/70 mt-2 text-center">Click Mic & Speak into microphone...</p>
             </div>
         </div>
 
         <!-- TEXT TO MEME SCREEN -->
         <div id="screenTextMeme" class="w-full max-w-sm flex flex-col items-center space-y-4 hidden transition-all duration-300">
             
-            <!-- Meme Card Box -->
+            <!-- Funny Meme Display Box -->
             <div id="memeBox" class="w-full h-44 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl flex flex-col items-center justify-center p-4 relative overflow-hidden">
                 <div id="memeDefault" class="flex flex-col items-center text-center">
-                    <i class="fa-solid fa-face-laugh-beam text-4xl text-white/70 mb-2"></i>
-                    <p class="text-xs text-white/80 font-medium">Type text below & hit Generate!</p>
+                    <i class="fa-solid fa-face-laugh-squint text-4xl text-white/70 mb-2"></i>
+                    <p class="text-xs text-white/80 font-medium">Type text below & hit Generate for Funny Meme!</p>
                 </div>
                 
-                <div id="memeActive" class="hidden flex items-center space-x-3 w-full bg-black/30 p-3 rounded-xl border border-yellow-300/50">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120" class="w-16 h-16 rounded-full object-cover border-2 border-yellow-300 shadow-md">
+                <div id="memeActive" class="hidden flex items-center space-x-3 w-full bg-black/40 p-3 rounded-xl border border-yellow-300/50">
+                    <img id="memeTemplateImg" src="https://i.imgflip.com/4/1bij.jpg" class="w-20 h-20 rounded-lg object-cover border-2 border-yellow-300 shadow-md">
                     <div class="flex-1">
-                        <span class="text-[10px] text-yellow-300 font-bold uppercase tracking-wider">Meme Speaking...</span>
-                        <p id="memeSpokenText" class="text-sm font-bold text-white mt-0.5">"Ram ram sareyane"</p>
+                        <span id="memeCharacterTitle" class="text-[10px] text-yellow-300 font-bold uppercase tracking-wider">Meme Voice</span>
+                        <p id="memeSpokenText" class="text-xs font-bold text-white mt-1 leading-snug">"Ram ram sareyanne"</p>
                     </div>
                 </div>
             </div>
 
             <div class="w-full bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/20 shadow-xl space-y-3">
                 <h2 class="text-sm font-bold tracking-wider flex items-center"><i class="fa-solid fa-masks-theater mr-2"></i> Create Funny Meme Audio</h2>
-                <textarea id="memeTextInput" rows="3" placeholder="Enter funny dialogue or text here..." class="w-full p-3 rounded-xl bg-black/20 border border-white/30 text-white placeholder-white/50 text-sm focus:outline-none focus:border-white"></textarea>
+                <textarea id="memeTextInput" rows="3" placeholder="Type funny text here (e.g. Ram ram sareyane)..." class="w-full p-3 rounded-xl bg-black/20 border border-white/30 text-white placeholder-white/50 text-sm focus:outline-none focus:border-white"></textarea>
                 <button onclick="generateMemeAudio()" class="w-full py-3 rounded-xl bg-white/20 font-bold text-sm tracking-wider border border-white/40 shadow-md active:scale-98 transition flex items-center justify-center space-x-2">
                     <i class="fa-solid fa-volume-high"></i>
-                    <span>Generate & Play Audio</span>
+                    <span>Generate Meme & Play Audio</span>
                 </button>
             </div>
         </div>
@@ -140,6 +140,25 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // List of real Celebrities
+        const celebrities = [
+            { name: "Shah Rukh Khan", quote: "Picture abhi baaki hai mere dost!", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" },
+            { name: "Amitabh Bachchan", quote: "Rishte mein toh hum tumhare baap lagte hain!", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" },
+            { name: "Salman Khan", quote: "Ek baar jo maine commitment kar di...", img: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150" },
+            { name: "Tony Stark (Iron Man)", quote: "I am Iron Man!", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" }
+        ];
+
+        // List of Famous Memes
+        const memes = [
+            { title: "Doge Meme", img: "https://i.imgflip.com/4/4t0m5.jpg" },
+            { title: "Gigachad Meme", img: "https://i.imgflip.com/4/563a6a.jpg" },
+            { title: "Cheems Doge", img: "https://i.imgflip.com/4/3si4.jpg" },
+            { title: "Cat Laugh Meme", img: "https://i.imgflip.com/4/1bij.jpg" }
+        ];
+
+        let recognition = null;
+        let isRecording = false;
+
         function switchTab(tab) {
             const body = document.getElementById('appBody');
             const navSlider = document.getElementById('navSlider');
@@ -175,36 +194,99 @@
             }
         }
 
-        function startVoiceScan() {
+        function toggleVoiceRecognition() {
             const stateDefault = document.getElementById('stateDefault');
             const stateMatched = document.getElementById('stateMatched');
             const progressBar = document.getElementById('progressBar');
             const accuracyText = document.getElementById('accuracyText');
             const statusMsg = document.getElementById('statusMsg');
             const micIcon = document.getElementById('micIcon');
-            
-            // Reset
+            const recordBtnText = document.getElementById('recordBtnText');
+            const micHint = document.getElementById('micHint');
+
+            // Reset UI
             stateDefault.classList.remove('hidden');
             stateMatched.classList.add('hidden');
-            micIcon.className = "fa-solid fa-spinner fa-spin text-3xl text-white";
-            statusMsg.innerText = "Scanning voice pitch and frequencies...";
-            
-            let progress = 0;
-            let interval = setInterval(() => {
-                progress += 10;
-                progressBar.style.width = progress + '%';
-                accuracyText.innerText = progress + '%';
-                
-                if(progress >= 100) {
-                    clearInterval(interval);
-                    micIcon.className = "fa-solid fa-microphone text-3xl text-white";
-                    statusMsg.innerText = "Voice successfully matched!";
-                    
-                    // Show Celebrity Box cleanly
-                    stateDefault.classList.add('hidden');
-                    stateMatched.classList.remove('hidden');
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (SpeechRecognition) {
+                if (!isRecording) {
+                    recognition = new SpeechRecognition();
+                    recognition.lang = 'hi-IN'; // Hindi / Hinglish support
+                    recognition.interimResults = false;
+
+                    recognition.onstart = function() {
+                        isRecording = true;
+                        micIcon.className = "fa-solid fa-spinner fa-spin text-3xl text-white";
+                        recordBtnText.innerText = "LISTENING";
+                        micHint.innerText = "SPEAK NOW...";
+                        statusMsg.innerText = "Listening to your voice... say something!";
+                        progressBar.style.width = '40%';
+                        accuracyText.innerText = '40%';
+                    };
+
+                    recognition.onresult = function(event) {
+                        const transcript = event.results[0][0].transcript;
+                        statusMsg.innerText = `Recognized: "${transcript}"`;
+                        processMatch(transcript);
+                    };
+
+                    recognition.onerror = function(event) {
+                        isRecording = false;
+                        micIcon.className = "fa-solid fa-microphone text-3xl text-white";
+                        recordBtnText.innerText = "SPEAK";
+                        micHint.innerText = "TAP MIC & SPEAK";
+                        statusMsg.innerText = "Could not hear properly. Please speak again!";
+                        progressBar.style.width = '0%';
+                        accuracyText.innerText = '0%';
+                    };
+
+                    recognition.onend = function() {
+                        isRecording = false;
+                        micIcon.className = "fa-solid fa-microphone text-3xl text-white";
+                        recordBtnText.innerText = "SPEAK";
+                    };
+
+                    recognition.start();
                 }
-            }, 120);
+            } else {
+                // Fallback simulation if speech recognition is not supported in browser
+                statusMsg.innerText = "Simulating voice pitch scan...";
+                micIcon.className = "fa-solid fa-spinner fa-spin text-3xl text-white";
+                setTimeout(() => {
+                    micIcon.className = "fa-solid fa-microphone text-3xl text-white";
+                    processMatch("Sample Voice");
+                }, 2000);
+            }
+        }
+
+        function processMatch(speechText) {
+            const stateDefault = document.getElementById('stateDefault');
+            const stateMatched = document.getElementById('stateMatched');
+            const progressBar = document.getElementById('progressBar');
+            const accuracyText = document.getElementById('accuracyText');
+            const statusMsg = document.getElementById('statusMsg');
+            const celebImg = document.getElementById('celebImg');
+            const celebName = document.getElementById('celebName');
+            const celebQuote = document.getElementById('celebQuote');
+            const matchScoreText = document.getElementById('matchScoreText');
+
+            // Pick random celebrity match
+            const matchedCeleb = celebrities[Math.floor(Math.random() * celebrities.length)];
+            const matchScore = Math.floor(Math.random() * 20) + 80; // 80% to 99%
+
+            progressBar.style.width = matchScore + '%';
+            accuracyText.innerText = matchScore + '%';
+            matchScoreText.innerText = `${matchScore}% Voice Match Found!`;
+
+            celebImg.src = matchedCeleb.img;
+            celebName.innerText = matchedCeleb.name;
+            celebQuote.innerText = `"${matchedCeleb.quote}"`;
+
+            stateDefault.classList.add('hidden');
+            stateMatched.classList.remove('hidden');
+            statusMsg.innerText = `Voice Matched with ${matchedCeleb.name}!`;
         }
 
         function generateMemeAudio() {
@@ -213,22 +295,29 @@
             const memeDefault = document.getElementById('memeDefault');
             const memeActive = document.getElementById('memeActive');
             const memeSpokenText = document.getElementById('memeSpokenText');
+            const memeTemplateImg = document.getElementById('memeTemplateImg');
+            const memeCharacterTitle = document.getElementById('memeCharacterTitle');
 
             if(!text) {
-                alert("Please type something first!");
+                alert("Please type some meme text first!");
                 return;
             }
 
-            // Show Meme Active Box
-            memeDefault.classList.add('hidden');
-            memeActive.classList.remove('hidden');
+            // Pick a random popular meme image
+            const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+
+            memeTemplateImg.src = randomMeme.img;
+            memeCharacterTitle.innerText = randomMeme.title;
             memeSpokenText.innerText = `"${text}"`;
 
-            // Speak audio
+            memeDefault.classList.add('hidden');
+            memeActive.classList.remove('hidden');
+
+            // Speak audio out loud
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
-                utterance.pitch = 1.3;
+                utterance.pitch = 1.4; // funny pitch
                 utterance.rate = 1.0;
                 window.speechSynthesis.speak(utterance);
             }
