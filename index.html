@@ -97,17 +97,16 @@
         }
 
         /* Custom Scrollbar */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+</style>
 </head>
-<body id="appBody" class="theme-cyan h-screen w-screen flex flex-col justify-between overflow-hidden relative transition-colors duration-500">
-
+<body id="appBody" class="theme-cyan min-h-screen w-screen flex flex-col justify-between pb-20 relative transition-all duration-500 font-sans">
     <header class="w-full pt-3 pb-1 px-4 flex items-center justify-between z-10 shrink-0">
         <div class="flex items-center space-x-2.5">
             <div id="headerIcon" class="w-9 h-9 rounded-full bg-white/25 backdrop-blur-md flex items-center justify-center text-white text-lg shadow-md border border-white/30">
