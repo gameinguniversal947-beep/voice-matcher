@@ -1,245 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Voice Lab</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoiceLab - Interactive Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
-*{box-sizing:border-box}
-body{margin:0;padding:20px 16px 110px;font-family:Arial,sans-serif;color:white;background:linear-gradient(#29b8ed,#009cdb);min-height:100vh}
-header{text-align:center;font-size:25px;font-weight:bold;margin:10px 0 22px}
-.page{display:none;max-width:520px;margin:auto}
-.page.active{display:block}
-.card{background:#ffffff20;border:1px solid #ffffff55;border-radius:24px;padding:23px 18px;margin:18px 0;box-shadow:0 8px 20px #006a9125}
-.hero{text-align:center;padding:30px 15px}
-.robot{font-size:65px}
-h2{font-size:23px;margin:12px 0}
-p{opacity:.85}
-.mic{width:145px;height:145px;border-radius:50%;background:#20c981;border:7px solid #8be7b3;font-size:48px;color:white;display:block;margin:25px auto 12px}
-button{cursor:pointer}
-.status{text-align:center;min-height:22px;font-size:14px;margin-top:12px}
-input,textarea,select{width:100%;padding:13px;border:0;border-radius:12px;font-size:16px;margin:8px 0;color:#17313b}
-.action{padding:13px 18px;border:0;border-radius:12px;background:#063343;color:white;font-weight:bold;margin:5px}
-.row{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
-.nav{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:5px;width:min(92%,360px);padding:8px;background:#032431;border:2px solid #47616a;border-radius:55px}
-.tab{flex:1;border:0;border-radius:35px;background:transparent;color:#c4d4d9;padding:12px 4px;font-size:12px}
-.tab span{display:block;font-size:24px;margin-bottom:4px}
-.tab.active{background:#4b6872;color:white}
-.score{font-size:24px;font-weight:bold;text-align:center}
-.track{display:block;width:100%;text-align:left;padding:14px;border-radius:12px;border:0;background:#ffffff25;color:white;margin:8px 0}
-small{opacity:.8}
+.tab-screen { display: none; }
+.tab-screen.active { display: block; }
+.nav-btn.active { background-color: rgb(245, 158, 11); color: rgb(15, 23, 42); }
 </style>
 </head>
-<body>
-
-<header>⚡ VOICE LAB</header>
-
-<section id="voice" class="page active">
-  <div class="card hero">
-    <div class="robot">🤖</div>
-    <h2>Tap Mic & Speak to Match</h2>
-    <p>Fun Voice Matcher</p>
-  </div>
-  <button class="mic" id="record">🎙️</button>
-  <div class="status" id="voiceStatus">Tap the mic and speak</div>
-  <div class="card">
-    <div class="score" id="score">0%</div>
-    <p style="text-align:center">Voice Match Score</p>
-    <div id="heard" style="text-align:center"></div>
-    <h2 id="match" style="text-align:center"></h2>
-    <p id="matchInfo" style="text-align:center"></p>
-  </div>
+<body class="bg-slate-950 text-white min-h-screen flex flex-col font-sans">
+<!-- Header -->
+<header class="bg-slate-900 border-b border-slate-800 p-4 text-center sticky top-0 z-50 shadow-lg">
+<h1 class="text-xl font-bold tracking-wider text-amber-400">⚡ VOICELAB STUDIO ⚡</h1>
+</header>
+<!-- Main Container -->
+<main class="flex-1 max-w-md mx-auto w-full p-6 space-y-8 flex flex-col justify-center">
+<!-- SCREEN 1: CELEBRITY VOICE MATCHER -->
+<section id="screen-celebrity" class="tab-screen active space-y-6">
+<!-- Red Box: Output (Anime/Celebrity) -->
+<div id="celeb-output" class="bg-slate-900 border-4 border-red-500 rounded-3xl p-6 shadow-2xl flex flex-col items-center justify-center min-h-[300px] space-y-4">
+<img id="celeb-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500" alt="Result" class="w-40 h-40 object-cover rounded-full border-4 border-amber-400 shadow-md">
+<h3 id="celeb-name" class="text-2xl font-bold text-white tracking-wide text-center">🎤 Microphone Test</h3>
+<p id="celeb-quote" class="text-sm italic text-slate-400 text-center">"Kuch bolo..."</p>
+<div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden">
+<div id="match-bar" class="bg-gradient-to-r from-red-500 to-amber-400 h-full w-0 transition-all duration-1000"></div>
+</div>
+</div>
+<!-- Yellow Box: Spoken Text Display -->
+<div class="bg-slate-900 border-2 border-yellow-500 rounded-2xl p-4 min-h-[60px] flex items-center justify-center shadow-lg">
+<p id="speech-text" class="text-sm text-yellow-100 font-medium text-center italic">"Waiting for voice input..."</p>
+</div>
+<!-- Green Button: Trigger -->
+<button id="start-celeb" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-3xl transition-all shadow-lg active:scale-95 text-lg">
+🎙️ Match Voice
+</button>
 </section>
-
-<section id="meme" class="page">
-  <div class="card hero">
-    <div class="robot">🎭</div>
-    <h2>Meme Talk</h2>
-    <p>Type something and hear your robot voice.</p>
-  </div>
-  <div class="card">
-    <textarea id="memeText" rows="4">Hello human! I am your meme robot.</textarea>
-    <label for="style">Voice style</label>
-    <select id="style">
-      <option value="robot">Robot</option>
-      <option value="deep">Deep narrator</option>
-      <option value="fast">Fast funny voice</option>
-      <option value="normal">Normal</option>
-    </select>
-    <div class="row">
-      <button class="action" id="speak">▶ Speak</button>
-      <button class="action" id="stop">■ Stop</button>
-    </div>
-    <div class="status" id="memeStatus">Ready</div>
-  </div>
+<!-- SCREEN 2: BUMBLEBEE MEME TALKER -->
+<section id="screen-meme" class="tab-screen space-y-6">
+<!-- Red Box: Output (Meme) -->
+<div class="bg-slate-900 border-4 border-red-500 rounded-3xl overflow-hidden shadow-2xl min-h-[300px] flex items-center justify-center">
+<img id="meme-img" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500" alt="Meme" class="w-full h-full object-cover">
+</div>
+<!-- Yellow Box: Text Input -->
+<div class="bg-slate-900 border-2 border-yellow-500 rounded-2xl p-2 shadow-lg">
+<input type="text" id="meme-input" placeholder="Kuch type karo..." class="w-full bg-transparent text-white px-4 py-3 focus:outline-none text-sm placeholder-slate-500">
+</div>
+<!-- Green Button: Generate -->
+<button onclick="speakMeme()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-3xl transition-all shadow-lg active:scale-95 text-lg">
+🤖 Speak as Bumblebee
+</button>
 </section>
-
-<section id="music" class="page">
-  <div class="card hero">
-    <div class="robot" id="cover">🎧</div>
-    <h2 id="songTitle">Sunny Day</h2>
-    <p id="songArtist">Sample music</p>
-    <audio id="audio" preload="none"></audio>
-    <div class="row">
-      <button class="action" id="prev">⏮ Previous</button>
-      <button class="action" id="play">▶ Play</button>
-      <button class="action" id="next">Next ⏭</button>
-    </div>
-    <div class="status" id="musicStatus">Choose Play to start</div>
-  </div>
-  <div class="card">
-    <h2>Playlist</h2>
-    <button class="track" data-track="0">☀️ Sunny Day</button>
-    <button class="track" data-track="1">🌙 Night Drive</button>
-    <button class="track" data-track="2">🌊 Chill Waves</button>
-    <small>Music needs an internet connection.</small>
-  </div>
+<!-- SCREEN 3: SEQUENTIAL MUSIC PLAYER -->
+<section id="screen-music" class="tab-screen space-y-6">
+<!-- Red Box: Output (Album Art/Track) -->
+<div class="bg-slate-900 border-4 border-red-500 rounded-3xl p-6 shadow-2xl flex flex-col items-center justify-center min-h-[300px] space-y-5">
+<div class="w-48 h-48 rounded-2xl overflow-hidden shadow-xl border-2 border-slate-800">
+<img id="track-art" src="" alt="Album Art" class="w-full h-full object-cover">
+</div>
+<div class="text-center">
+<h3 id="track-title" class="text-xl font-bold text-white tracking-wide">Song Title</h3>
+<p id="track-artist" class="text-sm text-slate-400 font-medium">Artist Name</p>
+</div>
+</div>
+<!-- Yellow Box: Progress Visualizer (Static Representation) -->
+<div class="bg-slate-900 border-2 border-yellow-500 rounded-2xl p-4 shadow-lg flex items-center justify-center space-x-2">
+<div class="w-2 h-8 bg-yellow-500 animate-bounce"></div>
+<div class="w-2 h-12 bg-yellow-400 animate-bounce delay-75"></div>
+<div class="w-2 h-16 bg-red-500 animate-bounce delay-150"></div>
+<div class="w-2 h-12 bg-yellow-400 animate-bounce delay-300"></div>
+<div class="w-2 h-8 bg-yellow-500 animate-bounce delay-500"></div>
+</div>
+<!-- Green Button: Controls -->
+<div class="flex justify-between items-center space-x-4">
+<button id="prev-track" class="w-1/4 bg-slate-800 hover:bg-slate-700 text-white p-5 rounded-3xl transition-all shadow-lg active:scale-95">⏮️</button>
+<button id="play-track" class="w-1/2 bg-green-600 hover:bg-green-700 text-white font-bold py-5 rounded-3xl transition-all shadow-lg active:scale-95 text-xl">▶️</button>
+<button id="next-track" class="w-1/4 bg-slate-800 hover:bg-slate-700 text-white p-5 rounded-3xl transition-all shadow-lg active:scale-95">⏭️</button>
+</div>
 </section>
-
-<nav class="nav">
-  <button class="tab active" data-page="voice"><span>🎙️</span>VOICE</button>
-  <button class="tab" data-page="meme"><span>🎭</span>MEME TALK</button>
-  <button class="tab" data-page="music"><span>♫</span>MUSIC</button>
+</main>
+<!-- Bottom Navigation: Screen Switcher -->
+<nav class="sticky bottom-0 bg-slate-900 border-t border-slate-800 p-4 pb-8">
+<div class="max-w-md mx-auto flex items-center justify-between space-x-3 bg-slate-950 p-2 rounded-full border border-slate-800">
+<button onclick="switchScreen('celebrity')" class="nav-btn active flex-1 py-3 px-4 rounded-full text-xs font-bold transition-all uppercase tracking-wider text-center">VOICE MATCH</button>
+<button onclick="switchScreen('meme')" class="nav-btn flex-1 py-3 px-4 rounded-full text-xs font-bold transition-all uppercase tracking-wider text-center text-slate-400 hover:text-white">MEME TALKER</button>
+<button onclick="switchScreen('music')" class="nav-btn flex-1 py-3 px-4 rounded-full text-xs font-bold transition-all uppercase tracking-wider text-center text-slate-400 hover:text-white">MUSIC PLAYER</button>
+</div>
 </nav>
-
+<!-- JS Logic -->
 <script>
-const $ = id => document.getElementById(id);
-
-// Navigation tabs
-document.querySelectorAll(".tab").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-    button.classList.add("active");
-    $(button.dataset.page).classList.add("active");
-    if ("speechSynthesis" in window) speechSynthesis.cancel();
-  });
+// Screen Switching
+function switchScreen(screenName) {
+document.querySelectorAll('.tab-screen').forEach(el => el.classList.remove('active'));
+document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+document.getElementById(screen-${screenName}).classList.add('active');
+// Button styles mapping
+const btnMap = {
+'celebrity': 0,
+'meme': 1,
+'music': 2
+};
+document.querySelectorAll('.nav-btn')[btnMap[screenName]].classList.add('active');
+}
+// Feature 1: Celebrity Voice Matcher Logic
+const celebs = {
+"amitabh": { name: "Amitabh Bachchan", quote: "Rishtey mein toh hum tumhare baap lagte hain, naam hai Shahenshah!", score: 98, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500" },
+"shahrukh": { name: "Shah Rukh Khan", quote: "Don ko pakadna mushkil hi nahi, namumkin hai!", score: 95, img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500" },
+"pushpa": { name: "Allu Arjun (Pushpa)", quote: "Pushpa, Pushpa Raj... Jhukega nahi saala!", score: 92, img: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=500" },
+"goku": { name: "Goku", quote: "I am the hope of the universe. I am the answer to all living things that cry out for peace.", score: 99, img: "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=500" }
+};
+const startCelebBtn = document.getElementById('start-celeb');
+const speechTextDisplay = document.getElementById('speech-text');
+const matchBar = document.getElementById('match-bar');
+const celebImg = document.getElementById('celeb-img');
+const celebName = document.getElementById('celeb-name');
+const celebQuote = document.getElementById('celeb-quote');
+startCelebBtn.addEventListener('click', () => {
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if(!SpeechRecognition) {
+alert("Aapka browser Speech Recognition support nahi karta.");
+return;
+}
+const recognition = new SpeechRecognition();
+recognition.lang = 'hi-IN';
+speechTextDisplay.textContent = "Listening...";
+recognition.onresult = (event) => {
+const text = event.results[0][0].transcript.toLowerCase();
+speechTextDisplay.textContent = "${text}";
+let matchedKey = "amitabh"; // default
+if(text.includes('shah') || text.includes('don')) matchedKey = "shahrukh";
+else if(text.includes('pushpa') || text.includes('jhukega')) matchedKey = "pushpa";
+else if(text.includes('goku') || text.includes('hope')) matchedKey = "goku";
+const matched = celebs[matchedKey];
+celebImg.src = matched.img;
+celebName.textContent = matched.name;
+celebQuote.textContent = "${matched.quote}";
+matchBar.style.width = ${matched.score}%;
+};
+recognition.start();
 });
-
-// Voice Matcher
-const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-let rec = null;
-$("record").addEventListener("click", () => {
-  if (!SpeechRec) {
-    $("voiceStatus").textContent = "Voice recognition not supported. Try Chrome.";
-    return;
-  }
-  try {
-    rec = new SpeechRec();
-    rec.lang = "hi-IN";
-    rec.interimResults = false;
-    $("voiceStatus").textContent = "Listening... Speak now!";
-    $("record").textContent = "🔴";
-    rec.onresult = e => {
-      const words = e.results[0][0].transcript;
-      $("heard").textContent = "Heard: " + words;
-      const lower = words.toLowerCase();
-      let name = "Cartoon Robot 🤖";
-      let info = "Your phrase matched a playful robot style.";
-      if (/hello|namaste|dost|hain|kaun/.test(lower)) {
-        name = "Amitabh-style dramatic voice 🎬";
-        info = "A fun text-based style match.";
-      } else if (/love|pyaar|dil|heart/.test(lower)) {
-        name = "Romantic movie narrator ⭐";
-        info = "A fun text-based style match.";
-      } else if (/music|story|beautiful/.test(lower)) {
-        name = "Calm narrator 🎧";
-        info = "A fun text-based style match.";
-      }
-      $("score").textContent = (65 + Math.floor(Math.random()*30)) + "%";
-      $("match").textContent = name;
-      $("matchInfo").textContent = info;
-      $("voiceStatus").textContent = "Voice match complete!";
-    };
-    rec.onerror = e => {
-      $("voiceStatus").textContent =
-        e.error === "not-allowed"
-        ? "Allow microphone permission in browser settings."
-        : "Couldn't hear you. Try again with internet on.";
-    };
-    rec.onend = () => $("record").textContent = "🎙️";
-    rec.start();
-  } catch(e) {
-    $("voiceStatus").textContent = "Open in Chrome and allow microphone access.";
-    $("record").textContent = "🎙️";
-  }
-});
-
-// Meme Talk: uses the device's built-in speech engine
-$("speak").addEventListener("click", () => {
-  const text = $("memeText").value.trim();
-  if (!text) {
-    $("memeStatus").textContent = "Please type something first.";
-    return;
-  }
-  if (!("speechSynthesis" in window)) {
-    $("memeStatus").textContent = "Text-to-speech isn't supported here.";
-    return;
-  }
-  speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  const style = $("style").value;
-  utter.pitch = style === "robot" ? 1.7 : style === "deep" ? 0.55 : style === "fast" ? 1.3 : 1;
-  utter.rate = style === "fast" ? 1.5 : 1;
-  utter.onstart = () => $("memeStatus").textContent = "Speaking...";
-  utter.onend = () => $("memeStatus").textContent = "Finished!";
-  utter.onerror = () => $("memeStatus").textContent = "Speech could not play. Try again.";
-  speechSynthesis.speak(utter);
-});
-$("stop").addEventListener("click", () => {
-  if ("speechSynthesis" in window) speechSynthesis.cancel();
-  $("memeStatus").textContent = "Stopped.";
-});
-
-// Music Player
-const songs = [
-  {title:"Sunny Day",artist:"Sample instrumental",emoji:"☀️",url:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"},
-  {title:"Night Drive",artist:"Sample instrumental",emoji:"🌙",url:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"},
-  {title:"Chill Waves",artist:"Sample instrumental",emoji:"🌊",url:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"}
+// Feature 2: Bumblebee Meme Talker Logic
+const memeImages = [
+"https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500",
+"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500",
+"https://images.unsplash.com/photo-1563089145-599997674d42?w=500"
 ];
-let index = 0;
-const audio = $("audio");
-function loadSong(i, autoPlay=false) {
-  index = (i + songs.length) % songs.length;
-  const song = songs[index];
-  $("songTitle").textContent = song.title;
-  $("songArtist").textContent = song.artist;
-  $("cover").textContent = song.emoji;
-  audio.src = song.url;
-  $("musicStatus").textContent = "Selected: " + song.title;
-  $("play").textContent = "▶ Play";
-  document.querySelectorAll(".track").forEach((b,n) => {
-    b.style.background = n === index ? "#063343" : "#ffffff25";
-  });
-  if (autoPlay) playSong();
+function speakMeme() {
+const input = document.getElementById('meme-input');
+const img = document.getElementById('meme-img');
+const text = input.value.trim() || "Hello human!";
+const index = text.length % memeImages.length;
+img.src = memeImages[index];
+if ('speechSynthesis' in window) {
+window.speechSynthesis.cancel();
+const utterance = new SpeechSynthesisUtterance(text);
+utterance.pitch = 1.8;
+utterance.rate = 1.1;
+window.speechSynthesis.speak(utterance);
 }
-async function playSong() {
-  try {
-    await audio.play();
-    $("play").textContent = "⏸ Pause";
-    $("musicStatus").textContent = "Playing: " + songs[index].title;
-  } catch(e) {
-    $("musicStatus").textContent = "Audio couldn't load. Check internet and try again.";
-  }
 }
-$("play").addEventListener("click", () => {
-  if (audio.paused) playSong();
-  else {
-    audio.pause();
-    $("play").textContent = "▶ Play";
-    $("musicStatus").textContent = "Paused";
-  }
+// Feature 3: Sequential Music Player Logic
+const playlist = [
+{ title: "Cyberpunk Vibe", artist: "Synthwave Master", art: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500" },
+{ title: "Electric Neon", artist: "Retro Future", art: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" },
+{ title: "Bumblebee Theme", artist: "Cybertron Beats", art: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500" }
+];
+let currentTrackIndex = 0;
+let isPlaying = false;
+const trackTitle = document.getElementById('track-title');
+const trackArtist = document.getElementById('track-artist');
+const trackArt = document.getElementById('track-art');
+const playMusicBtn = document.getElementById('play-track');
+function loadTrack(index) {
+const track = playlist[index];
+trackTitle.textContent = track.title;
+trackArtist.textContent = track.artist;
+trackArt.src = track.art;
+}
+document.getElementById('next-track').addEventListener('click', () => {
+currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+loadTrack(currentTrackIndex);
 });
-$("next").addEventListener("click", () => loadSong(index+1, true));
-$("prev").addEventListener("click", () => loadSong(index-1, true));
-document.querySelectorAll(".track").forEach(button => {
-  button.addEventListener("click", () => loadSong(Number(button.dataset.track), true));
+document.getElementById('prev-track').addEventListener('click', () => {
+currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+loadTrack(currentTrackIndex);
 });
-audio.addEventListener("ended", () => loadSong(index+1, true));
-audio.addEventListener("error", () => {
-  if (audio.src) $("musicStatus").textContent = "Track failed. Check internet or choose another.";
+playMusicBtn.addEventListener('click', () => {
+isPlaying = !isPlaying;
+playMusicBtn.textContent = isPlaying ? "⏸️" : "▶️";
 });
-loadSong(0);
+loadTrack(currentTrackIndex);
 </script>
 </body>
 </html>
