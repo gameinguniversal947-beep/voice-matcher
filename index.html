@@ -38,7 +38,7 @@
                         <i class="fa-solid fa-coins text-3xl text-slate-950"></i>
                     </div>
                     <h1 class="text-2xl font-extrabold text-white tracking-tight">Ads Are <span class="text-brand-400">Money</span></h1>
-                    <p class="text-slate-400 text-xs mt-1">Watch Clean Ads • Win Daily Cash Prizes (₹10 - ₹100)</p>
+                    <p class="text-slate-400 text-xs mt-1">Watch Clean Ads • Win Daily Cash Prizes</p>
                 </div>
 
                 <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 mb-6 relative overflow-hidden">
@@ -121,7 +121,7 @@
             </div>
         </div>
 
-        <!-- SCREEN 2: BLUEPRINT DASHBOARD -->
+        <!-- SCREEN 2: DASHBOARD -->
         <div id="dashboardScreen" class="hidden flex-1 flex flex-col bg-slate-950 overflow-y-auto pb-6">
             <!-- HEADER -->
             <div class="sticky top-0 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 p-4 flex justify-between items-center z-10">
@@ -150,58 +150,58 @@
             <div class="p-4 space-y-3">
                 <div class="mb-2">
                     <h2 class="text-sm font-bold text-white">Watch Ads & Claim Tickets</h2>
-                    <p class="text-xs text-slate-400">Complete daily tasks to win instant cash</p>
+                    <p class="text-xs text-slate-400">Complete all 5 tasks to qualify for the daily lucky pool</p>
                 </div>
 
                 <!-- Ticket 1 -->
                 <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
                     <div>
                         <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 1</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">1 Ad dekho aur jito <span class="text-brand-400">₹10 ki ticket</span></h4>
+                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 1 Dekho (Progress 1/5)</h4>
                     </div>
-                    <button onclick="watchTaskAd(1, 10)" id="adBtn1" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad 1</button>
+                    <button onclick="watchTaskAd(1)" id="adBtn1" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                 </div>
 
                 <!-- Ticket 2 -->
                 <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
                     <div>
                         <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 2</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">2 Ad dekho aur jito <span class="text-brand-400">₹20 ki ticket</span></h4>
+                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 2 Dekho (Progress 2/5)</h4>
                     </div>
-                    <button onclick="watchTaskAd(2, 20)" id="adBtn2" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad 2</button>
+                    <button onclick="watchTaskAd(2)" id="adBtn2" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                 </div>
 
                 <!-- Ticket 3 -->
                 <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
                     <div>
                         <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 3</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">3 Ad dekho aur jito <span class="text-brand-400">₹30 ki ticket</span></h4>
+                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 3 Dekho (Progress 3/5)</h4>
                     </div>
-                    <button onclick="watchTaskAd(3, 30)" id="adBtn3" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad 3</button>
+                    <button onclick="watchTaskAd(3)" id="adBtn3" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                 </div>
 
                 <!-- Ticket 4 -->
                 <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
                     <div>
                         <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 4</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">4 Ad dekho aur jito <span class="text-brand-400">₹40 ki ticket</span></h4>
+                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 4 Dekho (Progress 4/5)</h4>
                     </div>
-                    <button onclick="watchTaskAd(4, 40)" id="adBtn4" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad 4</button>
+                    <button onclick="watchTaskAd(4)" id="adBtn4" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                 </div>
 
                 <!-- Ticket 5 -->
                 <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-amber-500">
                     <div>
                         <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 5</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">5 Ad dekho aur jito <span class="text-amber-400">₹50 ki ticket</span></h4>
+                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 5 Dekho (Final Ticket)</h4>
                     </div>
-                    <button onclick="watchTaskAd(5, 50)" id="adBtn5" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad 5</button>
+                    <button onclick="watchTaskAd(5)" id="adBtn5" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                 </div>
 
-                <!-- BOTTOM LIMIT RULES -->
-                <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-3 text-center mt-4">
-                    <p class="text-amber-300 text-[11px] font-semibold">
-                        ⚠️ Limit: You can only buy 5 tickets ticket and amount
+                <!-- BOTTOM INFO BOX -->
+                <div class="bg-brand-500/10 border border-brand-500/30 rounded-2xl p-3.5 text-center mt-4">
+                    <p class="text-brand-300 text-[11px] font-semibold leading-relaxed">
+                        ✨ Sabhi 5 tickets poori karne par aapko daily lucky draw (Total pool ₹150 for top winners) mein shamil kiya jata hai!
                     </p>
                 </div>
             </div>
@@ -291,7 +291,7 @@
             document.getElementById('otpModal').classList.remove('hidden');
         }
 
-        function watchTaskAd(ticketNum, rewardAmount) {
+        function watchTaskAd(ticketNum) {
             const btn = document.getElementById(`adBtn${ticketNum}`);
             if(btn.disabled) return;
 
@@ -305,22 +305,31 @@
                     btn.innerText = `${timeLeft}s...`;
                 } else {
                     clearInterval(timer);
-                    walletAmount += rewardAmount;
-                    document.getElementById('walletBalance').innerText = walletAmount.toFixed(2);
+                    
+                    // Controlled Lucky Draw Logic for the 5 tickets system
+                    // If ticket 5 is completed, user enters the lucky draw pool for the ₹150 reward quota
+                    if (ticketNum === 5) {
+                        walletAmount += 30; // Crediting part of pool reward for testing
+                        document.getElementById('walletBalance').innerText = walletAmount.toFixed(2);
+                        alert(`Badhai ho! Aapne sabhi 5 tickets poori kar li hain aur aapko lucky draw pool mein shamil kar liya gaya hai!`);
+                    } else {
+                        walletAmount += 10;
+                        document.getElementById('walletBalance').innerText = walletAmount.toFixed(2);
+                        alert(`Ticket ${ticketNum} ad completed successfully!`);
+                    }
                     
                     btn.innerText = 'Completed ✓';
                     btn.className = 'bg-slate-800 text-slate-500 font-bold text-xs px-3.5 py-2 rounded-xl cursor-not-allowed';
-                    alert(`Badhai ho! Aapne Ticket ${ticketNum} poori karke ₹${rewardAmount} earn kar liye hain!`);
                 }
             }, 1000);
         }
 
         function claimPayout() {
             if (walletAmount <= 0) {
-                alert('Pehle Ad dekhkar wallet mein balance earn karein!');
+                alert('Pehle Ads dekhkar balance earn karein!');
                 return;
             }
-            alert(`Withdrawal request successful! ₹${walletAmount} aapke UPI Linked Number (${currentUserPhone}) par transfer kiye ja rahe hain.`);
+            alert(`Withdrawal request successful! ₹${walletAmount.toFixed(2)} aapke UPI Linked Number (${currentUserPhone}) par transfer kiye ja rahe hain.`);
             walletAmount = 0;
             document.getElementById('walletBalance').innerText = '0.00';
         }
