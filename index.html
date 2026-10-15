@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ads Are Money - Daily Lucky Draw</title>
+    <title>Ads Are Money - Monthly Lucky Draw</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@
                         <i class="fa-solid fa-ticket text-3xl text-slate-950"></i>
                     </div>
                     <h1 class="text-2xl font-extrabold text-white tracking-tight">Ads Are <span class="text-brand-400">Money</span></h1>
-                    <p class="text-slate-400 text-xs mt-1">Watch Ads • Collect Tickets • Win Daily UPI Pool</p>
+                    <p class="text-slate-400 text-xs mt-1">Watch Ads • 1-Month Task • Monthly UPI Pool</p>
                 </div>
 
                 <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 mb-6">
@@ -47,7 +47,7 @@
                         <div>
                             <h4 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Zaroori Sochna</h4>
                             <p class="text-amber-200/90 text-xs mt-1 leading-relaxed">
-                                Apne <strong class="text-amber-300 underline">UPI (PhonePe / Google Pay / Paytm)</strong> linked mobile number se login karein taki winner hone par seedha paisa transfer ho sake.
+                                Apne <strong class="text-amber-300 underline">UPI (PhonePe / Google Pay / Paytm)</strong> linked mobile number se login karein taki monthly winner hone par seedha paisa transfer ho sake.
                             </p>
                         </div>
                     </div>
@@ -117,29 +117,43 @@
 
                 <!-- POOL INFO -->
                 <div class="bg-slate-900 border border-brand-500/40 rounded-xl px-3 py-2 text-right">
-                    <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block">Daily Lucky Pool</span>
-                    <span class="text-sm font-black text-brand-400">₹150 <span class="text-[10px] text-slate-300 font-normal">(5 Winners)</span></span>
+                    <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block">Monthly Lucky Pool</span>
+                    <span class="text-sm font-black text-brand-400">₹500 <span class="text-[10px] text-slate-300 font-normal">(Winners)</span></span>
+                </div>
+            </div>
+
+            <!-- WITHDRAWAL & BALANCE SECTION -->
+            <div class="p-4">
+                <div class="bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-700/80 rounded-2xl p-4 flex justify-between items-center shadow-lg">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Monthly Reward Status</span>
+                        <span class="text-lg font-black text-white mt-0.5 block" id="rewardStatusText">Lucky Draw Pending</span>
+                    </div>
+                    <button onclick="handleWithdraw()" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition-all shadow-md flex items-center gap-1.5">
+                        <i class="fa-solid fa-wallet"></i>
+                        <span>Withdraw</span>
+                    </button>
                 </div>
             </div>
 
             <!-- TASK TICKETS LIST (1 TO 5) -->
-            <div class="p-4 space-y-3">
+            <div class="px-4 space-y-3">
                 <div class="mb-2 flex justify-between items-end">
                     <div>
-                        <h2 class="text-sm font-bold text-white">Daily 5 Tickets Task</h2>
-                        <p class="text-xs text-slate-400">Sabhi 5 ads dekhkar unique ticket numbers prapt karein</p>
+                        <h2 class="text-sm font-bold text-white">Monthly 5 Tickets Task</h2>
+                        <p class="text-xs text-slate-400">Sabhi 5 ads dekhkar 1-month ka ticket secure karein</p>
                     </div>
                     <span id="ticketsCompletedCount" class="text-xs font-bold text-brand-400 bg-brand-500/10 border border-brand-500/30 px-2.5 py-1 rounded-lg">0 / 5 Done</span>
                 </div>
 
-                <!-- COOLDOWN TIMER BANNER (HIDDEN UNTIL FINISHED) -->
+                <!-- COOLDOWN TIMER BANNER (1 MONTH) -->
                 <div id="cooldownBanner" class="hidden bg-slate-900 border border-amber-500/40 rounded-2xl p-4 text-center space-y-2">
                     <div class="w-10 h-10 bg-amber-500/20 rounded-full mx-auto flex items-center justify-center text-amber-400 text-sm">
                         <i class="fa-solid fa-clock-rotate-left"></i>
                     </div>
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider">Next Lucky Draw Cooldown</h3>
-                    <p class="text-xs text-amber-300 font-mono font-bold text-base" id="timerDisplay">24:00:00</p>
-                    <p class="text-[11px] text-slate-400">Aapki tickets pool mein darj ho chuki hain. Agla task 24 ghante baad khulega!</p>
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wider">1-Month Lucky Draw Cooldown</h3>
+                    <p class="text-xs text-amber-300 font-mono font-bold text-base" id="timerDisplay">30d 00:00:00</p>
+                    <p class="text-[11px] text-slate-400">Aapki ticket mahine ke pool mein darj ho chuki hai. Agla task 30 din baad khulega!</p>
                 </div>
 
                 <!-- Ticket Containers -->
@@ -147,7 +161,7 @@
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card1">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #1</span>
-                            <h4 class="text-xs font-bold text-white mt-0.5">Ad Task 1</h4>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Monthly Ad Task 1</h4>
                         </div>
                         <button onclick="watchTaskAd(1)" id="adBtn1" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
@@ -155,7 +169,7 @@
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card2">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #2</span>
-                            <h4 class="text-xs font-bold text-white mt-0.5">Ad Task 2</h4>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Monthly Ad Task 2</h4>
                         </div>
                         <button onclick="watchTaskAd(2)" id="adBtn2" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
@@ -163,7 +177,7 @@
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card3">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #3</span>
-                            <h4 class="text-xs font-bold text-white mt-0.5">Ad Task 3</h4>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Monthly Ad Task 3</h4>
                         </div>
                         <button onclick="watchTaskAd(3)" id="adBtn3" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
@@ -171,7 +185,7 @@
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card4">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #4</span>
-                            <h4 class="text-xs font-bold text-white mt-0.5">Ad Task 4</h4>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Monthly Ad Task 4</h4>
                         </div>
                         <button onclick="watchTaskAd(4)" id="adBtn4" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
@@ -179,7 +193,7 @@
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-amber-500" id="card5">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #5</span>
-                            <h4 class="text-xs font-bold text-white mt-0.5">Final Ticket #5</h4>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Final Monthly Ticket #5</h4>
                         </div>
                         <button onclick="watchTaskAd(5)" id="adBtn5" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
@@ -188,7 +202,7 @@
                 <!-- INFO BOX -->
                 <div class="bg-brand-500/10 border border-brand-500/30 rounded-2xl p-3.5 text-center mt-4">
                     <p class="text-brand-300 text-[11px] font-semibold leading-relaxed">
-                        💡 <strong>Rules:</strong> Ads dekhne par koi instant balance nahi milta. 24 ghante baad random lucky draw mein agar aapki ticket number select hoti hai, toh ₹150 seedha aapke UPI number par bhej diye jayenge!
+                        💡 <strong>Rules:</strong> Ads dekhne par koi instant balance nahi milta. 1 mahine ke baad random monthly lucky draw mein agar aapki ticket number select hoti hai, toh reward amount aapke UPI number par bhej diya jayega aur aap Withdraw button se status check kar sakenge!
                     </p>
                 </div>
             </div>
@@ -262,12 +276,12 @@
                     completedTicketsCount++;
                     document.getElementById('ticketsCompletedCount').innerText = `${completedTicketsCount} / 5 Done`;
 
-                    // If all 5 tickets completed, start 24-hour cooldown and save timestamp
+                    // If all 5 tickets completed, start 30-day (1-month) cooldown and save timestamp
                     if (completedTicketsCount === 5) {
-                        const unlockTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 hours
-                        localStorage.setItem('user_cooldown_' + currentUserPhone, unlockTime);
+                        const unlockTime = new Date().getTime() + (30 * 24 * 60 * 60 * 1000); // 30 days
+                        localStorage.setItem('user_monthly_cooldown_' + currentUserPhone, unlockTime);
                         
-                        alert('Badhai ho! Aapne sabhi 5 tickets successfully collect kar li hain. Aapka ticket number lucky draw pool mein shamil ho gaya hai!');
+                        alert('Badhai ho! Aapne is mahine ki sabhi 5 tickets successfully collect kar li hain. Aapka ticket number monthly lucky draw pool mein shamil ho gaya hai!');
                         triggerCooldownUI(unlockTime);
                     }
                 }
@@ -275,13 +289,13 @@
         }
 
         function checkUserCooldownStatus() {
-            const savedUnlockTime = localStorage.getItem('user_cooldown_' + currentUserPhone);
+            const savedUnlockTime = localStorage.getItem('user_monthly_cooldown_' + currentUserPhone);
             if (savedUnlockTime) {
                 const now = new Date().getTime();
                 if (now < parseInt(savedUnlockTime)) {
                     triggerCooldownUI(parseInt(savedUnlockTime));
                 } else {
-                    localStorage.removeItem('user_cooldown_' + currentUserPhone);
+                    localStorage.removeItem('user_monthly_cooldown_' + currentUserPhone);
                 }
             }
         }
@@ -290,6 +304,7 @@
             document.getElementById('ticketsContainer').classList.add('hidden');
             document.getElementById('cooldownBanner').classList.remove('hidden');
             document.getElementById('ticketsCompletedCount').innerText = 'Completed ✓';
+            document.getElementById('rewardStatusText').innerText = '1-Month Draw Active';
 
             if (cooldownInterval) clearInterval(cooldownInterval);
 
@@ -299,21 +314,23 @@
 
                 if (distance < 0) {
                     clearInterval(cooldownInterval);
-                    localStorage.removeItem('user_cooldown_' + currentUserPhone);
-                    location.reload(); // Refresh to reset tasks for next day
+                    localStorage.removeItem('user_monthly_cooldown_' + currentUserPhone);
+                    location.reload(); // Refresh to reset tasks for next month
                     return;
                 }
 
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 document.getElementById('timerDisplay').innerText = 
+                    days + 'd ' +
                     String(hours).padStart(2, '0') + ':' + 
                     String(minutes).padStart(2, '0') + ':' + 
                     String(seconds).padStart(2, '0');
             }, 1000);
         }
-    </script>
-</body>
-</html>
+
+        function handleWithdraw() {
+            alert('Withdrawal Request: 1 ma
