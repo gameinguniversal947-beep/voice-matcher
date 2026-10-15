@@ -194,24 +194,26 @@
         }
 
 function completeTask(taskNo, rewardAmount) {
+    // User ke liye notification / warning
+    alert("⚠️ Note: Ad khulne ke baad us par click na karein, balki turant wapas back aa kar apna reward collect karein!");
+
     // Tera Adsterra SmartLink naye tab mein kholega
     window.open('https://asiafilm.org/4/2b44083e75d937d6eb75956c83d2e7c8', '_blank');
 
     currentUser.balance += rewardAmount;
-            
-            if (taskNo < 5) {
-                currentUser.currentTask = taskNo + 1;
-            } else {
-                // All 5 tasks done -> Trigger 30 day cooldown
-                // 30 days in milliseconds = 30 * 24 * 60 * 60 * 1000
-                currentUser.cooldownEnd = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
-                currentUser.currentTask = 6; // Completed all
-            }
 
-            localStorage.setItem('aam_user', JSON.stringify(currentUser));
-            showDashboard();
-        }
+    if (taskNo < 5) {
+        currentUser.currentTask = taskNo + 1;
+    } else {
+        // All 5 tasks done -> Trigger 30 day cooldown
+        // 30 days in milliseconds = 30 * 24 * 60 * 60 * 1000
+        currentUser.cooldownEnd = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
+        currentUser.currentTask = 6; // Completed all
+    }
 
+    localStorage.setItem('aam_user', JSON.stringify(currentUser));
+    showDashboard();
+}
         function updateTaskUI() {
             const current = currentUser.currentTask || 1;
             const isFinished = currentUser.cooldownEnd && currentUser.cooldownEnd > new Date().getTime();
