@@ -71,10 +71,13 @@
                 </div>
             </div>
 
-            <div class="pt-5">
+            <div class="pt-5 space-y-3">
                 <button type="button" onclick="handleSendOTP()" class="w-full bg-gradient-to-r from-brand-600 to-emerald-500 hover:from-brand-500 hover:to-emerald-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20 active:scale-[0.98]">
                     <span>Send OTP</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+                <button type="button" onclick="handleLogout()" id="logoutBtn" class="hidden w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2.5 px-4 rounded-xl text-xs transition-all">
+                    Switch Account / Logout
                 </button>
             </div>
         </div>
@@ -115,11 +118,10 @@
                     </div>
                 </div>
 
-                <!-- POOL INFO -->
-                <div class="bg-slate-900 border border-brand-500/40 rounded-xl px-3 py-2 text-right">
-                    <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block">Monthly Lucky Pool</span>
-                    <span class="text-sm font-black text-brand-400">₹500 <span class="text-[10px] text-slate-300 font-normal">(Winners)</span></span>
-                </div>
+                <!-- LOGOUT / SWITCH -->
+                <button onclick="handleLogout()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg border border-slate-700">
+                    Logout
+                </button>
             </div>
 
             <!-- WITHDRAWAL & BALANCE SECTION -->
@@ -158,7 +160,7 @@
 
                 <!-- Ticket Containers -->
                 <div id="ticketsContainer" class="space-y-3">
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card1">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #1</span>
                             <h4 class="text-xs font-bold text-white mt-0.5">Monthly Ad Task 1</h4>
@@ -166,7 +168,7 @@
                         <button onclick="watchTaskAd(1)" id="adBtn1" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card2">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #2</span>
                             <h4 class="text-xs font-bold text-white mt-0.5">Monthly Ad Task 2</h4>
@@ -174,7 +176,7 @@
                         <button onclick="watchTaskAd(2)" id="adBtn2" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card3">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #3</span>
                             <h4 class="text-xs font-bold text-white mt-0.5">Monthly Ad Task 3</h4>
@@ -182,7 +184,7 @@
                         <button onclick="watchTaskAd(3)" id="adBtn3" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card4">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #4</span>
                             <h4 class="text-xs font-bold text-white mt-0.5">Monthly Ad Task 4</h4>
@@ -190,7 +192,7 @@
                         <button onclick="watchTaskAd(4)" id="adBtn4" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-amber-500" id="card5">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-amber-500">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #5</span>
                             <h4 class="text-xs font-bold text-white mt-0.5">Final Monthly Ticket #5</h4>
@@ -215,8 +217,17 @@
         let completedTicketsCount = 0;
         let cooldownInterval = null;
 
-        document.getElementById('loginPhone').value = '';
-        document.getElementById('ageConsent').checked = false;
+        // Check if user was already logged in (persistence)
+        window.onload = function() {
+            const savedPhone = localStorage.getItem('active_user_phone');
+            if (savedPhone) {
+                currentUserPhone = savedPhone;
+                showDashboard();
+            } else {
+                document.getElementById('loginPhone').value = '';
+                document.getElementById('ageConsent').checked = false;
+            }
+        };
 
         function handleSendOTP() {
             const phone = document.getElementById('loginPhone').value.trim();
@@ -249,11 +260,60 @@
             }
 
             closeOtpModal();
+            localStorage.setItem('active_user_phone', currentUserPhone);
+            showDashboard();
+        }
+
+        function showDashboard() {
             document.getElementById('loginScreen').classList.add('hidden');
             document.getElementById('dashboardScreen').classList.remove('hidden');
             document.getElementById('userPhoneDisplay').innerText = '+91 ' + currentUserPhone.slice(0,2) + '***' + currentUserPhone.slice(-4);
             
+            loadUserState();
             checkUserCooldownStatus();
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('active_user_phone');
+            currentUserPhone = '';
+            completedTicketsCount = 0;
+            if (cooldownInterval) clearInterval(cooldownInterval);
+
+            // Reset UI
+            document.getElementById('dashboardScreen').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('loginPhone').value = '';
+            document.getElementById('ageConsent').checked = false;
+            document.getElementById('cooldownBanner').classList.add('hidden');
+            document.getElementById('ticketsContainer').classList.remove('hidden');
+            
+            // Reset task buttons
+            for (let i = 1; i <= 5; i++) {
+                const btn = document.getElementById(`adBtn${i}`);
+                btn.disabled = false;
+                btn.innerText = 'Watch Ad';
+                btn.className = (i === 5 ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all' : 'bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all');
+            }
+            document.getElementById('ticketsCompletedCount').innerText = '0 / 5 Done';
+        }
+
+        function loadUserState() {
+            const savedCount = localStorage.getItem('tickets_count_' + currentUserPhone);
+            if (savedCount) {
+                completedTicketsCount = parseInt(savedCount);
+                document.getElementById('ticketsCompletedCount').innerText = `${completedTicketsCount} / 5 Done`;
+                
+                // Mark completed buttons as done
+                for (let i = 1; i <= completedTicketsCount; i++) {
+                    const btn = document.getElementById(`adBtn${i}`);
+                    btn.disabled = true;
+                    btn.innerText = 'Collected ✓';
+                    btn.className = 'bg-slate-800 text-slate-500 font-bold text-xs px-3.5 py-2 rounded-xl cursor-not-allowed';
+                }
+            } else {
+                completedTicketsCount = 0;
+                document.getElementById('ticketsCompletedCount').innerText = '0 / 5 Done';
+            }
         }
 
         function watchTaskAd(ticketNum) {
@@ -275,62 +335,4 @@
                     
                     completedTicketsCount++;
                     document.getElementById('ticketsCompletedCount').innerText = `${completedTicketsCount} / 5 Done`;
-
-                    // If all 5 tickets completed, start 30-day (1-month) cooldown and save timestamp
-                    if (completedTicketsCount === 5) {
-                        const unlockTime = new Date().getTime() + (30 * 24 * 60 * 60 * 1000); // 30 days
-                        localStorage.setItem('user_monthly_cooldown_' + currentUserPhone, unlockTime);
-                        
-                        alert('Badhai ho! Aapne is mahine ki sabhi 5 tickets successfully collect kar li hain. Aapka ticket number monthly lucky draw pool mein shamil ho gaya hai!');
-                        triggerCooldownUI(unlockTime);
-                    }
-                }
-            }, 1000);
-        }
-
-        function checkUserCooldownStatus() {
-            const savedUnlockTime = localStorage.getItem('user_monthly_cooldown_' + currentUserPhone);
-            if (savedUnlockTime) {
-                const now = new Date().getTime();
-                if (now < parseInt(savedUnlockTime)) {
-                    triggerCooldownUI(parseInt(savedUnlockTime));
-                } else {
-                    localStorage.removeItem('user_monthly_cooldown_' + currentUserPhone);
-                }
-            }
-        }
-
-        function triggerCooldownUI(targetTime) {
-            document.getElementById('ticketsContainer').classList.add('hidden');
-            document.getElementById('cooldownBanner').classList.remove('hidden');
-            document.getElementById('ticketsCompletedCount').innerText = 'Completed ✓';
-            document.getElementById('rewardStatusText').innerText = '1-Month Draw Active';
-
-            if (cooldownInterval) clearInterval(cooldownInterval);
-
-            cooldownInterval = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = targetTime - now;
-
-                if (distance < 0) {
-                    clearInterval(cooldownInterval);
-                    localStorage.removeItem('user_monthly_cooldown_' + currentUserPhone);
-                    location.reload(); // Refresh to reset tasks for next month
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('timerDisplay').innerText = 
-                    days + 'd ' +
-                    String(hours).padStart(2, '0') + ':' + 
-                    String(minutes).padStart(2, '0') + ':' + 
-                    String(seconds).padStart(2, '0');
-            }, 1000);
-        }
-
-        function handleWithdraw() {
-            alert('Withdrawal Request: 1 ma
+          
