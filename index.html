@@ -1,358 +1,300 @@
 <!DOCTYPE html>
-<html lang="hi" class="dark">
+<html lang="hi" class="h-full bg-slate-950">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ads Are Money - Watch Ads & Win Cash</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Ads Are Money - Daily UPI Rewards</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
                     colors: {
                         brand: {
-                            50: '#eefdf5',
-                            100: '#d6fbc7',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                            800: '#065f46',
-                            900: '#064e3b',
-                            accent: '#00e676'
-                        },
-                        darkbg: '#0b0f19',
-                        darkcard: '#131b2e'
+                            50: '#f0fdf4',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            950: '#052c65'
+                        }
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0b0f19;
-            color: #f3f4f6;
-            -webkit-tap-highlight-color: transparent;
-        }
-    </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center p-4 sm:p-6 bg-darkbg text-gray-100">
+<body class="h-full font-sans text-slate-100 bg-slate-950 flex justify-center items-center antialiased sm:py-6">
 
-    <!-- APP CONTAINER -->
-    <div class="w-full max-w-md mx-auto relative min-h-[90vh] flex flex-col justify-center">
-
-        <!-- ================= LOGIN SCREEN ================= -->
-        <div id="loginScreen" class="w-full flex flex-col items-center space-y-6">
-            
-            <!-- App Icon -->
-            <div class="w-20 h-20 bg-brand-500/20 border border-brand-500/40 rounded-3xl flex items-center justify-center shadow-lg shadow-brand-500/10">
-                <svg class="w-12 h-12 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </div>
-
-            <!-- Title & Subtitle -->
-            <div class="text-center space-y-1">
-                <h1 class="text-3xl font-extrabold tracking-tight">Ads Are <span class="text-brand-accent">Money</span></h1>
-                <p class="text-sm text-gray-400 font-medium">Watch Clean Ads • Win Daily Cash Prizes (₹10 - ₹100)</p>
-            </div>
-
-            <!-- Warning Notice Card -->
-            <div class="w-full bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 flex items-start space-x-3">
-                <div class="p-2 bg-amber-500/20 rounded-xl text-amber-400 shrink-0">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                    </svg>
+    <div class="w-full max-w-md h-full sm:h-[844px] bg-slate-900 sm:rounded-[36px] sm:border-8 sm:border-slate-800 shadow-2xl flex flex-col justify-between relative overflow-hidden">
+        
+        <!-- SCREEN 1: LOGIN -->
+        <div id="loginScreen" class="flex-1 flex flex-col justify-between p-6 z-20 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 overflow-y-auto">
+            <div>
+                <div class="text-center mt-6 mb-8">
+                    <div class="w-16 h-16 bg-gradient-to-tr from-brand-600 to-emerald-400 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-brand-500/20 mb-4">
+                        <i class="fa-solid fa-coins text-3xl text-slate-950"></i>
+                    </div>
+                    <h1 class="text-2xl font-extrabold text-white tracking-tight">Ads Are <span class="text-brand-400">Money</span></h1>
+                    <p class="text-slate-400 text-xs mt-1">Watch Clean Ads • Win Daily Cash Prizes (₹10 - ₹100)</p>
                 </div>
-                <div class="text-xs leading-relaxed">
-                    <h2 class="font-bold text-amber-400 uppercase tracking-wide mb-0.5">ZAROORI SOCHNA (IMPORTANT WARNING)</h2>
-                    <p class="text-amber-200/90">Apne <span class="underline font-semibold">UPI (PhonePe / Google Pay / Paytm)</span> se linked phone number se hi login karein. Jeeti hui prize money direct isi number par bheji jayegi!</p>
-                </div>
-            </div>
 
-            <!-- Form Inputs -->
-            <div class="w-full space-y-4">
-                
-                <!-- Phone Number Field -->
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">UPI Linked Phone Number</label>
-                    <div class="relative flex items-center">
-                        <span class="absolute left-4 text-gray-400 font-medium">+91</span>
-                        <input type="tel" id="userPhone" maxlength="10" placeholder="Enter 10-digit mobile number" value="" class="w-full bg-darkcard border border-emerald-500/50 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/30 rounded-2xl py-3.5 pl-14 pr-4 text-white font-medium placeholder-gray-500 outline-none transition-all">
+                <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 mb-6 relative overflow-hidden">
+                    <div class="flex items-start gap-3">
+                        <div class="p-2 bg-amber-500/20 rounded-xl text-amber-400 shrink-0 mt-0.5"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div>
+                            <h4 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Zaroori Sochna (Important Warning)</h4>
+                            <p class="text-amber-200/90 text-xs mt-1 leading-relaxed">
+                                Apne <strong class="text-amber-300 underline">UPI (PhonePe / Google Pay / Paytm)</strong> se linked phone number se hi login karein.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Terms Checkbox -->
-                <label class="flex items-start space-x-3 cursor-pointer bg-darkcard/50 p-3 rounded-xl border border-gray-800">
-                    <input type="checkbox" id="ageConsent" class="mt-0.5 w-5 h-5 rounded border-gray-600 text-brand-500 focus:ring-brand-accent bg-gray-800" checked>
-                    <span class="text-xs text-gray-300 leading-tight">Meri umar <strong>18 taal ya usse zyada</strong> hai aur main Terms & Rules se sehmat hoon.</span>
-                </label>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">UPI Linked Phone Number</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-semibold text-sm">+91</span>
+                            <input type="tel" id="loginPhone" maxlength="10" placeholder="Enter 10-digit mobile number" class="w-full bg-slate-950 border border-slate-700 rounded-xl py-3.5 pl-12 pr-4 text-white text-sm font-semibold placeholder:text-slate-600 focus:outline-none focus:border-brand-500 transition-colors">
+                        </div>
+                    </div>
 
-                <!-- Error Message -->
-                <div id="loginError" class="hidden text-red-400 text-xs font-medium text-center bg-red-500/10 p-2.5 rounded-xl border border-red-500/20"></div>
-
-                <!-- Submit Button -->
-                <button type="button" onclick="handleSendOTP()" class="w-full bg-brand-500 hover:bg-brand-600 active:scale-[0.98] text-gray-950 font-bold py-4 rounded-2xl shadow-lg shadow-brand-500/25 transition-all flex items-center justify-center space-x-2 text-base">
-                    <span>Send OTP</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
-                </button>
+                    <div class="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700 cursor-pointer select-none">
+                        <input type="checkbox" id="ageConsent" class="mt-0.5 w-4 h-4 accent-brand-500 rounded cursor-pointer">
+                        <label for="ageConsent" class="text-xs text-slate-300 leading-tight cursor-pointer">
+                            Meri umar <strong class="text-white">18 saal ya usse zyada</strong> hai aur main Terms & Rules se sehmat hoon.
+                        </label>
+                    </div>
+                </div>
             </div>
 
-            <p class="text-xs text-gray-500 text-center">100% Secure & Instant UPI Transfers</p>
+            <div class="pt-5">
+                <button type="button" onclick="handleSendOTP()" class="w-full bg-gradient-to-r from-brand-600 to-emerald-500 hover:from-brand-500 hover:to-emerald-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20 active:scale-[0.98]">
+                    <span>Send OTP</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
         </div>
 
+        <!-- OTP MODAL (4-DIGIT) -->
+        <div id="otpModal" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-md z-30 flex items-center justify-center p-6">
+            <div class="w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-5 shadow-2xl">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 id="otpModalTitle" class="text-lg font-bold text-white">OTP Verification</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">OTP sent to <span id="displayOtpPhone" class="text-slate-200 font-semibold">+91 ********</span></p>
+                    </div>
+                    <button onclick="closeOtpModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
 
-        <!-- ================= MAIN DASHBOARD SCREEN (HIDDEN INITIALLY) ================= -->
-        <div id="dashboardScreen" class="hidden w-full flex-col space-y-5">
-            
-            <!-- User Header -->
-            <div class="flex items-center justify-between bg-darkcard border border-gray-800 p-4 rounded-2xl">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-full bg-brand-500/20 border border-brand-500/40 flex items-center justify-center text-brand-accent font-bold">
-                        👤
+                <div>
+                    <input type="text" id="otpInput" maxlength="4" placeholder="• • • •" class="w-full text-center tracking-[1rem] text-2xl font-bold bg-slate-950 border border-slate-700 rounded-xl py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
+                    <p class="text-[11px] text-center text-slate-500 mt-2">Test OTP Code: <span class="text-brand-400 font-mono font-bold">1234</span></p>
+                </div>
+
+                <button type="button" onclick="verifyOTP()" class="w-full bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-md active:scale-[0.98]">
+                    Verify & Proceed
+                </button>
+            </div>
+        </div>
+
+        <!-- CHANGE NUMBER MODAL -->
+        <div id="changePhoneModal" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-md z-30 flex items-center justify-center p-6">
+            <div class="w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4 shadow-2xl">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white">Update UPI Phone Number</h3>
+                    <button onclick="closeChangePhoneModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <p class="text-xs text-slate-400">Naya UPI linked phone number dalein. Old account data safe rahega.</p>
+                <div>
+                    <div class="relative">
+                        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-semibold text-sm">+91</span>
+                        <input type="tel" id="newPhoneInput" maxlength="10" placeholder="Enter new 10-digit number" class="w-full bg-slate-950 border border-slate-700 rounded-xl py-3 pl-12 pr-4 text-white text-sm font-semibold placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
+                    </div>
+                </div>
+                <button type="button" onclick="sendChangePhoneOTP()" class="w-full bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-3 rounded-xl transition-all">
+                    Send OTP to New Number
+                </button>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: MAIN DASHBOARD -->
+        <div id="dashboardScreen" class="hidden flex-1 flex flex-col bg-slate-900 overflow-y-auto pb-6">
+            <div class="sticky top-0 bg-slate-900/90 backdrop-blur-md border-b border-slate-800/80 p-4 flex justify-between items-center z-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-500/10 border border-brand-500/30 rounded-full flex items-center justify-center text-brand-400">
+                        <i class="fa-solid fa-user text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-gray-400">Welcome Back</p>
-                        <p id="displayPhone" class="text-sm font-bold text-white">+91 ******1234</p>
+                        <span id="userPhoneDisplay" class="text-sm font-bold text-white block">+91 98***1234</span>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-font-semibold">UPI Verified</span>
                     </div>
                 </div>
-                <button onclick="logout()" class="text-xs text-gray-400 hover:text-red-400 border border-gray-700 px-3 py-1.5 rounded-lg">Logout</button>
-            </div>
-
-            <!-- Balance Card -->
-            <div class="bg-gradient-to-br from-brand-900/60 to-darkcard border border-brand-500/30 p-5 rounded-2xl relative overflow-hidden">
-                <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-brand-500/10 rounded-full filter blur-xl"></div>
-                <p class="text-xs font-semibold uppercase tracking-wider text-brand-accent">Total Earned Wallet Balance</p>
-                <div class="flex items-baseline space-x-1 my-2">
-                    <span class="text-4xl font-extrabold text-white">₹<span id="walletBalance">0.00</span></span>
-                </div>
-                <button onclick="openWithdrawModal()" class="w-full mt-3 bg-brand-500 hover:bg-brand-600 text-gray-950 font-bold py-2.5 rounded-xl shadow transition text-sm">
-                    Instant UPI Withdrawal
+                <button onclick="openChangePhoneModal()" class="text-xs bg-slate-800 border border-slate-700 hover:border-slate-600 text-slate-300 py-1.5 px-3 rounded-lg flex items-center gap-1.5">
+                    <i class="fa-solid fa-pen-to-square text-[10px]"></i> Change
                 </button>
             </div>
 
-            <!-- Watch Ads Section -->
-            <div class="space-y-3">
-                <h3 class="text-sm font-bold uppercase tracking-wider text-gray-400">Today's Available Ad Tasks</h3>
-
-                <!-- Ad Card 1 -->
-                <div class="bg-darkcard border border-gray-800 p-4 rounded-2xl flex items-center justify-between">
-                    <div class="space-y-1">
-                        <div class="flex items-center space-x-2">
-                            <span class="bg-brand-500/20 text-brand-accent text-xs font-bold px-2 py-0.5 rounded">Ad #1</span>
-                            <span class="text-xs text-gray-400">15 Seconds</span>
-                        </div>
-                        <p class="text-sm font-bold text-white">Watch Brand Video Task</p>
-                        <p class="text-xs text-emerald-400 font-semibold">+ ₹10.00 Reward</p>
+            <div class="p-4 space-y-4">
+                <div class="bg-gradient-to-br from-slate-800 to-slate-800/80 border border-slate-700/80 rounded-2xl p-5 shadow-xl">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs text-slate-400 font-medium">Available Cash Wallet</span>
+                        <span class="text-xs text-brand-400 bg-brand-400/10 px-2 py-0.5 rounded-full font-semibold">Ready to Transfer</span>
                     </div>
-                    <button id="adBtn1" onclick="startAd(1, 10)" class="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-4 py-2.5 rounded-xl text-xs font-bold transition">
-                        Watch & Earn
-                    </button>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-3xl font-extrabold text-white">₹<span id="walletBalance">0.00</span></span>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-700/60 flex gap-2">
+                        <button onclick="claimPayout()" class="flex-1 bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-wallet"></i> Instant Withdraw to UPI
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Ad Card 2 -->
-                <div class="bg-darkcard border border-gray-800 p-4 rounded-2xl flex items-center justify-between">
-                    <div class="space-y-1">
-                        <div class="flex items-center space-x-2">
-                            <span class="bg-brand-500/20 text-brand-accent text-xs font-bold px-2 py-0.5 rounded">Ad #2</span>
-                            <span class="text-xs text-gray-400">15 Seconds</span>
-                        </div>
-                        <p class="text-sm font-bold text-white">Sponsor Special Promo</p>
-                        <p class="text-xs text-emerald-400 font-semibold">+ ₹15.00 Reward</p>
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-play text-brand-400"></i> Daily Task Ads
+                        </h3>
+                        <span class="text-xs text-slate-400"><span id="adsWatched">0</span>/5 Completed</span>
                     </div>
-                    <button id="adBtn2" onclick="startAd(2, 15)" class="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-4 py-2.5 rounded-xl text-xs font-bold transition">
-                        Watch & Earn
-                    </button>
-                </div>
+                    
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-4">
+                        <div id="adProgressBar" class="bg-brand-400 h-full w-0 transition-all duration-300"></div>
+                    </div>
 
-                <!-- Ad Card 3 -->
-                <div class="bg-darkcard border border-gray-800 p-4 rounded-2xl flex items-center justify-between">
-                    <div class="space-y-1">
-                        <div class="flex items-center space-x-2">
-                            <span class="bg-brand-500/20 text-brand-accent text-xs font-bold px-2 py-0.5 rounded">Ad #3</span>
-                            <span class="text-xs text-gray-400">15 Seconds</span>
-                        </div>
-                        <p class="text-sm font-bold text-white">Featured App Ad</p>
-                        <p class="text-xs text-emerald-400 font-semibold">+ ₹20.00 Reward</p>
-                    </div>
-                    <button id="adBtn3" onclick="startAd(3, 20)" class="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-4 py-2.5 rounded-xl text-xs font-bold transition">
-                        Watch & Earn
+                    <button onclick="watchAd()" id="watchAdBtn" class="w-full bg-slate-800 border border-slate-700 hover:border-brand-500/50 text-white font-semibold py-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-play text-brand-400"></i> Watch Next Ad (Earn ₹10)
                     </button>
                 </div>
             </div>
-
         </div>
 
     </div>
 
-
-    <!-- ================= OTP POPUP MODAL ================= -->
-    <div id="otpModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-darkcard border border-gray-700 w-full max-w-sm rounded-3xl p-6 space-y-5 shadow-2xl relative">
-            <button onclick="closeOtpModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-1">✕</button>
-
-            <div class="text-center space-y-1">
-                <h3 class="text-xl font-bold text-white">Verify OTP</h3>
-                <p class="text-xs text-gray-400">Verification code sent to <br><span id="otpPhoneText" class="font-bold text-brand-accent">+91 9876543210</span></p>
-            </div>
-
-            <!-- Demo Hint -->
-            <div class="bg-brand-500/10 border border-brand-500/30 text-center p-2 rounded-xl">
-                <p class="text-xs text-brand-accent font-semibold">Demo OTP: <span class="tracking-widest underline font-bold">123456</span></p>
-            </div>
-
-            <div class="space-y-3">
-                <input type="text" id="otpInput" maxlength="6" placeholder="• • • • • •" class="w-full text-center tracking-[0.5em] text-2xl font-bold bg-darkbg border border-gray-700 focus:border-brand-accent rounded-2xl py-3 text-white outline-none">
-                
-                <div id="otpError" class="hidden text-red-400 text-xs font-medium text-center bg-red-500/10 p-2 rounded-xl"></div>
-
-                <button type="button" onclick="verifyOTP()" class="w-full bg-brand-500 hover:bg-brand-600 active:scale-[0.98] text-gray-950 font-bold py-3.5 rounded-2xl shadow-lg shadow-brand-500/20 transition-all text-sm">
-                    Verify & Continue
-                </button>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ================= AD PLAYER MODAL ================= -->
-    <div id="adModal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col items-center justify-between p-4">
-        <div class="w-full flex justify-between items-center max-w-md pt-2">
-            <span class="text-xs bg-gray-800 text-gray-300 px-3 py-1 rounded-full">Sourced Sponsor Ad</span>
-            <span id="adTimer" class="text-xs font-bold bg-brand-500 text-gray-950 px-3 py-1 rounded-full">15s remaining</span>
-        </div>
-
-        <div class="w-full max-w-md my-auto aspect-video bg-gray-900 border border-gray-800 rounded-2xl flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
-            <div class="animate-pulse w-16 h-16 bg-brand-500/20 rounded-full flex items-center justify-center text-brand-accent mb-3 text-2xl">
-                ▶
-            </div>
-            <p class="text-base font-bold text-white">Interactive Video Ad Playing...</p>
-            <p class="text-xs text-gray-400 mt-1">Please do not close or switch tab to claim reward.</p>
-        </div>
-
-        <button id="closeAdBtn" disabled onclick="finishAd()" class="w-full max-w-md bg-gray-700 text-gray-400 font-bold py-3.5 rounded-2xl text-sm transition">
-            Please Wait 15s...
-        </button>
-    </div>
-
-
-    <!-- ================= WITHDRAWAL MODAL ================= -->
-    <div id="withdrawModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-darkcard border border-gray-700 w-full max-w-sm rounded-3xl p-6 space-y-4 shadow-2xl relative">
-            <button onclick="closeWithdrawModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">✕</button>
-
-            <h3 class="text-lg font-bold text-white text-center">Instant UPI Withdrawal</h3>
-
-            <div class="space-y-3 pt-2">
-                <div>
-                    <label class="text-xs text-gray-400">Withdrawal Amount</label>
-                    <input type="number" id="withdrawAmount" placeholder="Enter Amount (Min ₹10)" class="w-full bg-darkbg border border-gray-700 rounded-xl p-3 text-white text-sm outline-none focus:border-brand-accent">
-                </div>
-                <div>
-                    <label class="text-xs text-gray-400">UPI ID / Phone</label>
-                    <input type="text" id="withdrawUPI" readonly class="w-full bg-darkbg/50 border border-gray-800 text-gray-400 rounded-xl p-3 text-sm outline-none">
-                </div>
-
-                <div id="withdrawMsg" class="hidden text-xs text-center p-2 rounded-xl"></div>
-
-                <button onclick="processWithdrawal()" class="w-full bg-brand-500 hover:bg-brand-600 text-gray-950 font-bold py-3 rounded-xl text-sm transition">
-                    Request Payout
-                </button>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- SCRIPT LOGIC -->
     <script>
-        let userPhoneNumber = '';
-        let currentBalance = 0.00;
-        let activeAdReward = 0;
-        let adInterval = null;
+        let currentUserPhone = '';
+        let walletAmount = 0;
+        let watchedCount = 0;
+        let isChangingPhone = false;
 
-        // 1. Handle Send OTP Click
         function handleSendOTP() {
-            const phoneInput = document.getElementById('userPhone').value.trim();
-            const ageConsent = document.getElementById('ageConsent').checked;
-            const errorDiv = document.getElementById('loginError');
+            const phone = document.getElementById('loginPhone').value.trim();
+            const ageChecked = document.getElementById('ageConsent').checked;
 
-            errorDiv.classList.add('hidden');
-
-            if (!phoneInput || phoneInput.length !== 10 || isNaN(phoneInput)) {
-                errorDiv.innerText = 'Kripya 10-digit ka valid phone number bharein.';
-                errorDiv.classList.remove('hidden');
+            if (phone.length !== 10 || isNaN(phone)) {
+                alert('Kripya apna sahi 10-digit ka mobile number dalein!');
+                return;
+            }
+            if (!ageChecked) {
+                alert('Aapko 18 saal se zyada hone ka confirmation checkbox mark karna hoga!');
                 return;
             }
 
-            if (!ageConsent) {
-                errorDiv.innerText = 'Aapko Terms & Rules accept karne honge (18+).';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-
-            userPhoneNumber = phoneInput;
-            document.getElementById('otpPhoneText').innerText = '+91 ' + userPhoneNumber;
-            document.getElementById('otpModal').classList.remove('hidden');
+            currentUserPhone = phone;
+            isChangingPhone = false;
+            document.getElementById('otpModalTitle').innerText = 'OTP Verification';
+            document.getElementById('displayOtpPhone').innerText = '+91 ' + phone;
             document.getElementById('otpInput').value = '';
-            document.getElementById('otpError').classList.add('hidden');
+            document.getElementById('otpModal').classList.remove('hidden');
         }
 
-        // 2. Close OTP Modal
         function closeOtpModal() {
             document.getElementById('otpModal').classList.add('hidden');
         }
 
-        // 3. Verify OTP Function
         function verifyOTP() {
-            const otpVal = document.getElementById('otpInput').value.trim();
-            const otpError = document.getElementById('otpError');
+            const otp = document.getElementById('otpInput').value.trim();
+            if (otp !== '1234') {
+                alert('Galat OTP! Correct test OTP hai: 1234');
+                return;
+            }
 
-            if (otpVal === '123456') {
-                closeOtpModal();
+            closeOtpModal();
+
+            if (isChangingPhone) {
+                document.getElementById('userPhoneDisplay').innerText = '+91 ' + currentUserPhone;
+                alert('Aapka UPI Phone Number safaltapurvak update ho gaya hai!');
+                isChangingPhone = false;
+            } else {
                 document.getElementById('loginScreen').classList.add('hidden');
                 document.getElementById('dashboardScreen').classList.remove('hidden');
-                document.getElementById('dashboardScreen').classList.add('flex');
-                document.getElementById('displayPhone').innerText = '+91 ' + userPhoneNumber;
-                document.getElementById('withdrawUPI').value = userPhoneNumber + '@upi';
-            } else {
-                otpError.innerText = 'Galat OTP! Demo OTP "123456" ka prayog karein.';
-                otpError.classList.remove('hidden');
+                document.getElementById('userPhoneDisplay').innerText = '+91 ' + currentUserPhone.slice(0,2) + '***' + currentUserPhone.slice(-4);
             }
         }
 
-        // 4. Logout
-        function logout() {
-            document.getElementById('dashboardScreen').classList.add('hidden');
-            document.getElementById('dashboardScreen').classList.remove('flex');
-            document.getElementById('loginScreen').classList.remove('hidden');
-            document.getElementById('userPhone').value = '';
+        function openChangePhoneModal() {
+            document.getElementById('newPhoneInput').value = '';
+            document.getElementById('changePhoneModal').classList.remove('hidden');
         }
 
-        // 5. Watch Ad Player Logic
-        function startAd(adId, reward) {
-            activeAdReward = reward;
-            let timeLeft = 15;
-            const adModal = document.getElementById('adModal');
-            const timerText = document.getElementById('adTimer');
-            const closeBtn = document.getElementById('closeAdBtn');
+        function closeChangePhoneModal() {
+            document.getElementById('changePhoneModal').classList.add('hidden');
+        }
 
-            adModal.classList.remove('hidden');
-            closeBtn.disabled = true;
-            closeBtn.className = "w-full max-w-md bg-gray-800 text-gray-500 font-bold py-3.5 rounded-2xl text-sm";
-            closeBtn.innerText = `Please Wait ${timeLeft}s...`;
-            timerText.innerText = `${timeLeft}s remaining`;
+        function sendChangePhoneOTP() {
+            const newPhone = document.getElementById('newPhoneInput').value.trim();
+            if (newPhone.length !== 10 || isNaN(newPhone)) {
+                alert('Kripya naya sahi 10-digit mobile number dalein!');
+                return;
+            }
 
-            clearInterval(adInterval);
-            adInterval = setInterval(() => {
+            currentUserPhone = newPhone;
+            isChangingPhone = true;
+            closeChangePhoneModal();
+            
+            document.getElementById('otpModalTitle').innerText = 'Verify New Number OTP';
+            document.getElementById('displayOtpPhone').innerText = '+91 ' + newPhone;
+            document.getElementById('otpInput').value = '';
+            document.getElementById('otpModal').classList.remove('hidden');
+        }
+
+        function watchAd() {
+            if (watchedCount >= 5) {
+                alert('Aaj ke sabhi 5 Ads poore ho chuke hain!');
+                return;
+            }
+
+            const btn = document.getElementById('watchAdBtn');
+            btn.disabled = true;
+            let timeLeft = 5;
+            btn.innerText = `Ad Playing... (${timeLeft}s)`;
+
+            const timer = setInterval(() => {
                 timeLeft--;
-                timerText.innerText = `${timeLeft}s remaining`;
-                closeBtn.innerText = `Please Wait ${timeLeft}s...`;
+                if (timeLeft > 0) {
+                    btn.innerText = `Ad Playing... (${timeLeft}s)`;
+                } else {
+                    clearInterval(timer);
+                    watchedCount++;
+                    walletAmount += 10;
+                    
+                    document.getElementById('walletBalance').innerText = walletAmount.toFixed(2);
+                    document.getElementById('adsWatched').innerText = watchedCount;
+                    document.getElementById('adProgressBar').style.width = (watchedCount * 20) + '%';
 
-                if (timeLeft <= 0) {
-                    clearInterval(adInterval);
-                    closeBtn.disabled = false;
-                    closeBtn.className = "w-full max-w-md bg-brand-500 hover:bg-brand-600 text-gray-950 font-bold py-3.5 rounded-2xl text-sm transit
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="fa-solid fa-circle-play text-brand-400"></i> Watch Next Ad (Earn ₹10)`;
+                    alert('Shabaash! Aapne ₹10 jeet liye hain.');
+                }
+            }, 1000);
+        }
+
+        function claimPayout() {
+            if (walletAmount <= 0) {
+                alert('Pehle Ad dekhkar wallet mein balance earn karein!');
+                return;
+            }
+            alert(`Withdrawal request successful! ₹${walletAmount} aapke UPI Linked Number (${currentUserPhone}) par transfer kiye ja rahe hain.`);
+            walletAmount = 0;
+            document.getElementById('walletBalance').innerText = '0.00';
+        }
+    </script>
+</body>
+</html>
