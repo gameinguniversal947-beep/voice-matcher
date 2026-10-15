@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ads Are Money - Daily UPI Rewards</title>
+    <title>Ads Are Money - Daily Lucky Draw</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,19 +35,19 @@
             <div>
                 <div class="text-center mt-6 mb-8">
                     <div class="w-16 h-16 bg-gradient-to-tr from-brand-600 to-emerald-400 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-brand-500/20 mb-4">
-                        <i class="fa-solid fa-coins text-3xl text-slate-950"></i>
+                        <i class="fa-solid fa-ticket text-3xl text-slate-950"></i>
                     </div>
                     <h1 class="text-2xl font-extrabold text-white tracking-tight">Ads Are <span class="text-brand-400">Money</span></h1>
-                    <p class="text-slate-400 text-xs mt-1">Watch Clean Ads • Win Daily Cash Prizes</p>
+                    <p class="text-slate-400 text-xs mt-1">Watch Ads • Collect Tickets • Win Daily UPI Pool</p>
                 </div>
 
-                <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 mb-6 relative overflow-hidden">
+                <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 mb-6">
                     <div class="flex items-start gap-3">
                         <div class="p-2 bg-amber-500/20 rounded-xl text-amber-400 shrink-0 mt-0.5"><i class="fa-solid fa-triangle-exclamation"></i></div>
                         <div>
-                            <h4 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Zaroori Sochna (Important Warning)</h4>
+                            <h4 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Zaroori Sochna</h4>
                             <p class="text-amber-200/90 text-xs mt-1 leading-relaxed">
-                                Apne <strong class="text-amber-300 underline">UPI (PhonePe / Google Pay / Paytm)</strong> se linked phone number se hi login karein.
+                                Apne <strong class="text-amber-300 underline">UPI (PhonePe / Google Pay / Paytm)</strong> linked mobile number se login karein taki winner hone par seedha paisa transfer ho sake.
                             </p>
                         </div>
                     </div>
@@ -58,14 +58,14 @@
                         <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">UPI Linked Phone Number</label>
                         <div class="relative">
                             <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-semibold text-sm">+91</span>
-                            <input type="tel" id="loginPhone" maxlength="10" value="" placeholder="Enter 10-digit mobile number" class="w-full bg-slate-950 border border-slate-700 rounded-xl py-3.5 pl-12 pr-4 text-white text-sm font-semibold placeholder:text-slate-600 focus:outline-none focus:border-brand-500 transition-colors">
+                            <input type="tel" id="loginPhone" maxlength="10" placeholder="Enter 10-digit mobile number" class="w-full bg-slate-950 border border-slate-700 rounded-xl py-3.5 pl-12 pr-4 text-white text-sm font-semibold placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
                         </div>
                     </div>
 
                     <div class="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700 cursor-pointer select-none">
                         <input type="checkbox" id="ageConsent" class="mt-0.5 w-4 h-4 accent-brand-500 rounded cursor-pointer">
                         <label for="ageConsent" class="text-xs text-slate-300 leading-tight cursor-pointer">
-                            Meri umar <strong class="text-white">18 saal ya usse zyada</strong> hai aur main Terms & Rules se sehmat hoon.
+                            Meri umar <strong class="text-white">18 saal ya usse zyada</strong> hai aur main Rules se sehmat hoon.
                         </label>
                     </div>
                 </div>
@@ -79,44 +79,24 @@
             </div>
         </div>
 
-        <!-- OTP MODAL (4-DIGIT) -->
+        <!-- OTP MODAL -->
         <div id="otpModal" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-md z-30 flex items-center justify-center p-6">
             <div class="w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-5 shadow-2xl">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h3 id="otpModalTitle" class="text-lg font-bold text-white">OTP Verification</h3>
+                        <h3 class="text-lg font-bold text-white">OTP Verification</h3>
                         <p class="text-xs text-slate-400 mt-0.5">OTP sent to <span id="displayOtpPhone" class="text-slate-200 font-semibold">+91 ********</span></p>
                     </div>
                     <button onclick="closeOtpModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
                 </div>
 
                 <div>
-                    <input type="text" id="otpInput" maxlength="4" value="" placeholder="• • • •" class="w-full text-center tracking-[1rem] text-2xl font-bold bg-slate-950 border border-slate-700 rounded-xl py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
+                    <input type="text" id="otpInput" maxlength="4" placeholder="• • • •" class="w-full text-center tracking-[1rem] text-2xl font-bold bg-slate-950 border border-slate-700 rounded-xl py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
                     <p class="text-[11px] text-center text-slate-500 mt-2">Test OTP Code: <span class="text-brand-400 font-mono font-bold">1234</span></p>
                 </div>
 
-                <button type="button" onclick="verifyOTP()" class="w-full bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-md active:scale-[0.98]">
+                <button type="button" onclick="verifyOTP()" class="w-full bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-md">
                     Verify & Proceed
-                </button>
-            </div>
-        </div>
-
-        <!-- CHANGE NUMBER MODAL -->
-        <div id="changePhoneModal" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-md z-30 flex items-center justify-center p-6">
-            <div class="w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4 shadow-2xl">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-white">Update UPI Phone Number</h3>
-                    <button onclick="closeChangePhoneModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
-                </div>
-                <p class="text-xs text-slate-400">Naya UPI linked phone number dalein. Old account data safe rahega.</p>
-                <div>
-                    <div class="relative">
-                        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-semibold text-sm">+91</span>
-                        <input type="tel" id="newPhoneInput" maxlength="10" value="" placeholder="Enter new 10-digit number" class="w-full bg-slate-950 border border-slate-700 rounded-xl py-3 pl-12 pr-4 text-white text-sm font-semibold placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
-                    </div>
-                </div>
-                <button type="button" onclick="sendChangePhoneOTP()" class="w-full bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-3 rounded-xl transition-all">
-                    Send OTP to New Number
                 </button>
             </div>
         </div>
@@ -131,77 +111,84 @@
                     </div>
                     <div>
                         <span id="userPhoneDisplay" class="text-sm font-bold text-white block">+91 ********</span>
-                        <div class="flex items-center gap-2 mt-0.5">
-                            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded font-semibold">UPI Verified</span>
-                            <button onclick="openChangePhoneModal()" class="text-[10px] text-slate-400 hover:text-white underline">Change</button>
-                        </div>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded font-semibold">UPI Linked</span>
                     </div>
                 </div>
 
-                <!-- WIN AMOUNT BOX -->
+                <!-- POOL INFO -->
                 <div class="bg-slate-900 border border-brand-500/40 rounded-xl px-3 py-2 text-right">
-                    <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block">Win Amount</span>
-                    <span class="text-lg font-black text-white">₹<span id="walletBalance">0.00</span></span>
-                    <button onclick="claimPayout()" class="block text-[9px] bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold px-2 py-0.5 rounded mt-1 transition-all">Withdraw</button>
+                    <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block">Daily Lucky Pool</span>
+                    <span class="text-sm font-black text-brand-400">₹150 <span class="text-[10px] text-slate-300 font-normal">(5 Winners)</span></span>
                 </div>
             </div>
 
             <!-- TASK TICKETS LIST (1 TO 5) -->
             <div class="p-4 space-y-3">
-                <div class="mb-2">
-                    <h2 class="text-sm font-bold text-white">Watch Ads & Claim Tickets</h2>
-                    <p class="text-xs text-slate-400">Complete all 5 tasks to qualify for the daily lucky pool</p>
-                </div>
-
-                <!-- Ticket 1 -->
-                <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
+                <div class="mb-2 flex justify-between items-end">
                     <div>
-                        <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 1</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 1 Dekho (Progress 1/5)</h4>
+                        <h2 class="text-sm font-bold text-white">Daily 5 Tickets Task</h2>
+                        <p class="text-xs text-slate-400">Sabhi 5 ads dekhkar unique ticket numbers prapt karein</p>
                     </div>
-                    <button onclick="watchTaskAd(1)" id="adBtn1" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
+                    <span id="ticketsCompletedCount" class="text-xs font-bold text-brand-400 bg-brand-500/10 border border-brand-500/30 px-2.5 py-1 rounded-lg">0 / 5 Done</span>
                 </div>
 
-                <!-- Ticket 2 -->
-                <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
-                    <div>
-                        <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 2</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 2 Dekho (Progress 2/5)</h4>
+                <!-- COOLDOWN TIMER BANNER (HIDDEN UNTIL FINISHED) -->
+                <div id="cooldownBanner" class="hidden bg-slate-900 border border-amber-500/40 rounded-2xl p-4 text-center space-y-2">
+                    <div class="w-10 h-10 bg-amber-500/20 rounded-full mx-auto flex items-center justify-center text-amber-400 text-sm">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
                     </div>
-                    <button onclick="watchTaskAd(2)" id="adBtn2" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wider">Next Lucky Draw Cooldown</h3>
+                    <p class="text-xs text-amber-300 font-mono font-bold text-base" id="timerDisplay">24:00:00</p>
+                    <p class="text-[11px] text-slate-400">Aapki tickets pool mein darj ho chuki hain. Agla task 24 ghante baad khulega!</p>
                 </div>
 
-                <!-- Ticket 3 -->
-                <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
-                    <div>
-                        <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 3</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 3 Dekho (Progress 3/5)</h4>
+                <!-- Ticket Containers -->
+                <div id="ticketsContainer" class="space-y-3">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card1">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #1</span>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Ad Task 1</h4>
+                        </div>
+                        <button onclick="watchTaskAd(1)" id="adBtn1" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
                     </div>
-                    <button onclick="watchTaskAd(3)" id="adBtn3" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card2">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #2</span>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Ad Task 2</h4>
+                        </div>
+                        <button onclick="watchTaskAd(2)" id="adBtn2" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card3">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #3</span>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Ad Task 3</h4>
+                        </div>
+                        <button onclick="watchTaskAd(3)" id="adBtn3" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500" id="card4">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #4</span>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Ad Task 4</h4>
+                        </div>
+                        <button onclick="watchTaskAd(4)" id="adBtn4" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-amber-500" id="card5">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket #5</span>
+                            <h4 class="text-xs font-bold text-white mt-0.5">Final Ticket #5</h4>
+                        </div>
+                        <button onclick="watchTaskAd(5)" id="adBtn5" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
+                    </div>
                 </div>
 
-                <!-- Ticket 4 -->
-                <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-brand-500">
-                    <div>
-                        <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 4</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 4 Dekho (Progress 4/5)</h4>
-                    </div>
-                    <button onclick="watchTaskAd(4)" id="adBtn4" class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
-                </div>
-
-                <!-- Ticket 5 -->
-                <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 flex justify-between items-center border-l-4 border-l-amber-500">
-                    <div>
-                        <span class="text-[10px] text-slate-400 uppercase tracking-wide font-bold">Ticket 5</span>
-                        <h4 class="text-xs font-bold text-white mt-0.5">Ad 5 Dekho (Final Ticket)</h4>
-                    </div>
-                    <button onclick="watchTaskAd(5)" id="adBtn5" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl transition-all">Watch Ad</button>
-                </div>
-
-                <!-- BOTTOM INFO BOX -->
+                <!-- INFO BOX -->
                 <div class="bg-brand-500/10 border border-brand-500/30 rounded-2xl p-3.5 text-center mt-4">
                     <p class="text-brand-300 text-[11px] font-semibold leading-relaxed">
-                        ✨ Sabhi 5 tickets poori karne par aapko daily lucky draw (Total pool ₹150 for top winners) mein shamil kiya jata hai!
+                        💡 <strong>Rules:</strong> Ads dekhne par koi instant balance nahi milta. 24 ghante baad random lucky draw mein agar aapki ticket number select hoti hai, toh ₹150 seedha aapke UPI number par bhej diye jayenge!
                     </p>
                 </div>
             </div>
@@ -211,18 +198,15 @@
 
     <script>
         let currentUserPhone = '';
-        let walletAmount = 0;
-        let isChangingPhone = false;
+        let completedTicketsCount = 0;
+        let cooldownInterval = null;
 
         document.getElementById('loginPhone').value = '';
         document.getElementById('ageConsent').checked = false;
 
         function handleSendOTP() {
-            const phoneInput = document.getElementById('loginPhone');
-            const ageConsent = document.getElementById('ageConsent');
-            
-            const phone = phoneInput.value.trim();
-            const ageChecked = ageConsent.checked;
+            const phone = document.getElementById('loginPhone').value.trim();
+            const ageChecked = document.getElementById('ageConsent').checked;
 
             if (phone.length !== 10 || isNaN(phone)) {
                 alert('Kripya apna sahi 10-digit ka mobile number dalein!');
@@ -234,8 +218,6 @@
             }
 
             currentUserPhone = phone;
-            isChangingPhone = false;
-            document.getElementById('otpModalTitle').innerText = 'OTP Verification';
             document.getElementById('displayOtpPhone').innerText = '+91 ' + phone;
             document.getElementById('otpInput').value = '';
             document.getElementById('otpModal').classList.remove('hidden');
@@ -253,42 +235,11 @@
             }
 
             closeOtpModal();
-
-            if (isChangingPhone) {
-                document.getElementById('userPhoneDisplay').innerText = '+91 ' + currentUserPhone;
-                alert('Aapka UPI Phone Number safaltapurvak update ho gaya hai!');
-                isChangingPhone = false;
-            } else {
-                document.getElementById('loginScreen').classList.add('hidden');
-                document.getElementById('dashboardScreen').classList.remove('hidden');
-                document.getElementById('userPhoneDisplay').innerText = '+91 ' + currentUserPhone.slice(0,2) + '***' + currentUserPhone.slice(-4);
-            }
-        }
-
-        function openChangePhoneModal() {
-            document.getElementById('newPhoneInput').value = '';
-            document.getElementById('changePhoneModal').classList.remove('hidden');
-        }
-
-        function closeChangePhoneModal() {
-            document.getElementById('changePhoneModal').classList.add('hidden');
-        }
-
-        function sendChangePhoneOTP() {
-            const newPhone = document.getElementById('newPhoneInput').value.trim();
-            if (newPhone.length !== 10 || isNaN(newPhone)) {
-                alert('Kripya naya sahi 10-digit mobile number dalein!');
-                return;
-            }
-
-            currentUserPhone = newPhone;
-            isChangingPhone = true;
-            closeChangePhoneModal();
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('dashboardScreen').classList.remove('hidden');
+            document.getElementById('userPhoneDisplay').innerText = '+91 ' + currentUserPhone.slice(0,2) + '***' + currentUserPhone.slice(-4);
             
-            document.getElementById('otpModalTitle').innerText = 'Verify New Number OTP';
-            document.getElementById('displayOtpPhone').innerText = '+91 ' + newPhone;
-            document.getElementById('otpInput').value = '';
-            document.getElementById('otpModal').classList.remove('hidden');
+            checkUserCooldownStatus();
         }
 
         function watchTaskAd(ticketNum) {
@@ -305,33 +256,63 @@
                     btn.innerText = `${timeLeft}s...`;
                 } else {
                     clearInterval(timer);
-                    
-                    // Controlled Lucky Draw Logic for the 5 tickets system
-                    // If ticket 5 is completed, user enters the lucky draw pool for the ₹150 reward quota
-                    if (ticketNum === 5) {
-                        walletAmount += 30; // Crediting part of pool reward for testing
-                        document.getElementById('walletBalance').innerText = walletAmount.toFixed(2);
-                        alert(`Badhai ho! Aapne sabhi 5 tickets poori kar li hain aur aapko lucky draw pool mein shamil kar liya gaya hai!`);
-                    } else {
-                        walletAmount += 10;
-                        document.getElementById('walletBalance').innerText = walletAmount.toFixed(2);
-                        alert(`Ticket ${ticketNum} ad completed successfully!`);
-                    }
-                    
-                    btn.innerText = 'Completed ✓';
+                    btn.innerText = 'Collected ✓';
                     btn.className = 'bg-slate-800 text-slate-500 font-bold text-xs px-3.5 py-2 rounded-xl cursor-not-allowed';
+                    
+                    completedTicketsCount++;
+                    document.getElementById('ticketsCompletedCount').innerText = `${completedTicketsCount} / 5 Done`;
+
+                    // If all 5 tickets completed, start 24-hour cooldown and save timestamp
+                    if (completedTicketsCount === 5) {
+                        const unlockTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 hours
+                        localStorage.setItem('user_cooldown_' + currentUserPhone, unlockTime);
+                        
+                        alert('Badhai ho! Aapne sabhi 5 tickets successfully collect kar li hain. Aapka ticket number lucky draw pool mein shamil ho gaya hai!');
+                        triggerCooldownUI(unlockTime);
+                    }
                 }
             }, 1000);
         }
 
-        function claimPayout() {
-            if (walletAmount <= 0) {
-                alert('Pehle Ads dekhkar balance earn karein!');
-                return;
+        function checkUserCooldownStatus() {
+            const savedUnlockTime = localStorage.getItem('user_cooldown_' + currentUserPhone);
+            if (savedUnlockTime) {
+                const now = new Date().getTime();
+                if (now < parseInt(savedUnlockTime)) {
+                    triggerCooldownUI(parseInt(savedUnlockTime));
+                } else {
+                    localStorage.removeItem('user_cooldown_' + currentUserPhone);
+                }
             }
-            alert(`Withdrawal request successful! ₹${walletAmount.toFixed(2)} aapke UPI Linked Number (${currentUserPhone}) par transfer kiye ja rahe hain.`);
-            walletAmount = 0;
-            document.getElementById('walletBalance').innerText = '0.00';
+        }
+
+        function triggerCooldownUI(targetTime) {
+            document.getElementById('ticketsContainer').classList.add('hidden');
+            document.getElementById('cooldownBanner').classList.remove('hidden');
+            document.getElementById('ticketsCompletedCount').innerText = 'Completed ✓';
+
+            if (cooldownInterval) clearInterval(cooldownInterval);
+
+            cooldownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetTime - now;
+
+                if (distance < 0) {
+                    clearInterval(cooldownInterval);
+                    localStorage.removeItem('user_cooldown_' + currentUserPhone);
+                    location.reload(); // Refresh to reset tasks for next day
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('timerDisplay').innerText = 
+                    String(hours).padStart(2, '0') + ':' + 
+                    String(minutes).padStart(2, '0') + ':' + 
+                    String(seconds).padStart(2, '0');
+            }, 1000);
         }
     </script>
 </body>
