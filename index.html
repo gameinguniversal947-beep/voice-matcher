@@ -1,303 +1,179 @@
-<!DOCTYPE html>
-<html lang="hi" class="h-full bg-slate-950">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ads Are Money - Daily UPI Rewards</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
-                    colors: {
-                        brand: {
-                            400: '#4ade80',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="h-full font-sans text-slate-100 bg-slate-950 flex justify-center items-center antialiased sm:py-6">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1350" width="100%" height="100%" style="background-color: #030712; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGlow" cx="50%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#16a34a" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#030712" stop-opacity="1" />
+    </radialGradient>
 
-    <div class="w-full max-w-md h-full sm:h-[844px] bg-slate-900 sm:rounded-[36px] sm:border-8 sm:border-slate-800 shadow-2xl flex flex-col justify-between relative overflow-hidden">
-        
-        <!-- SCREEN 1: LOGIN -->
-        <div id="loginScreen" class="flex-1 flex flex-col justify-between p-6 z-20 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 overflow-y-auto">
-            <div>
-                <div class="text-center mt-6 mb-8">
-                    <div class="w-16 h-16 bg-gradient-to-tr from-brand-600 to-emerald-400 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-brand-500/20 mb-4">
-                        <i class="fa-solid fa-coins text-3xl text-slate-950"></i>
-                    </div>
-                    <h1 class="text-2xl font-extrabold text-white tracking-tight">Ads Are <span class="text-brand-400">Money</span></h1>
-                    <p class="text-slate-400 text-xs mt-1">Watch Clean Ads • Win Daily Cash Prizes (₹10 - ₹100)</p>
-                </div>
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
 
-                <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 mb-6 relative overflow-hidden">
-                    <div class="flex items-start gap-3">
-                        <div class="p-2 bg-amber-500/20 rounded-xl text-amber-400 shrink-0 mt-0.5"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                        <div>
-                            <h4 class="text-amber-400 text-xs font-bold uppercase tracking-wider">Zaroori Sochna (Important Warning)</h4>
-                            <p class="text-amber-200/90 text-xs mt-1 leading-relaxed">
-                                Apne <strong class="text-amber-300 underline">UPI (PhonePe / Google Pay / Paytm)</strong> se linked phone number se hi login karein.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Neon Green Button Gradient -->
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
 
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">UPI Linked Phone Number</label>
-                        <div class="relative">
-                            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-semibold text-sm">+91</span>
-                            <input type="tel" id="loginPhone" maxlength="10" value="" placeholder="Enter 10-digit mobile number" class="w-full bg-slate-950 border border-slate-700 rounded-xl py-3.5 pl-12 pr-4 text-white text-sm font-semibold placeholder:text-slate-600 focus:outline-none focus:border-brand-500 transition-colors">
-                        </div>
-                    </div>
+    <!-- Gold Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
 
-                    <div class="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700 cursor-pointer select-none">
-                        <input type="checkbox" id="ageConsent" class="mt-0.5 w-4 h-4 accent-brand-500 rounded cursor-pointer">
-                        <label for="ageConsent" class="text-xs text-slate-300 leading-tight cursor-pointer">
-                            Meri umar <strong class="text-white">18 saal ya usse zyada</strong> hai aur main Terms & Rules se sehmat hoon.
-                        </label>
-                    </div>
-                </div>
-            </div>
+    <!-- Card Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
 
-            <div class="pt-5">
-                <button type="button" onclick="handleSendOTP()" class="w-full bg-gradient-to-r from-brand-600 to-emerald-500 hover:from-brand-500 hover:to-emerald-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20 active:scale-[0.98]">
-                    <span>Send OTP</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </button>
-            </div>
-        </div>
+    <!-- Glow Effect Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
 
-        <!-- OTP MODAL (4-DIGIT) -->
-        <div id="otpModal" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-md z-30 flex items-center justify-center p-6">
-            <div class="w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-5 shadow-2xl">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h3 id="otpModalTitle" class="text-lg font-bold text-white">OTP Verification</h3>
-                        <p class="text-xs text-slate-400 mt-0.5">OTP sent to <span id="displayOtpPhone" class="text-slate-200 font-semibold">+91 ********</span></p>
-                    </div>
-                    <button onclick="closeOtpModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
-                </div>
+  <!-- Background -->
+  <rect width="800" height="1350" fill="url(#bgGlow)" />
 
-                <div>
-                    <input type="text" id="otpInput" maxlength="4" value="" placeholder="• • • •" class="w-full text-center tracking-[1rem] text-2xl font-bold bg-slate-950 border border-slate-700 rounded-xl py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
-                    <p class="text-[11px] text-center text-slate-500 mt-2">Test OTP Code: <span class="text-brand-400 font-mono font-bold">1234</span></p>
-                </div>
+  <!-- Mobile Frame Container -->
+  <rect x="50" y="40" width="700" height="1270" rx="44" fill="#0f172a" stroke="#1e293b" stroke-width="6" />
 
-                <button type="button" onclick="verifyOTP()" class="w-full bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-md active:scale-[0.98]">
-                    Verify & Proceed
-                </button>
-            </div>
-        </div>
+  <!-- App Header / Status Bar Area -->
+  <g transform="translate(90, 80)">
+    <!-- Top Left: ID Number & Profile -->
+    <g>
+      <circle cx="36" cy="36" r="32" fill="#1e293b" stroke="#22c55e" stroke-width="2" />
+      <!-- User Silhouette Icon -->
+      <path d="M36 22 A10 10 0 1 0 36 42 A10 10 0 1 0 36 22 Z M20 58 C20 48 27 44 36 44 C45 44 52 48 52 58 Z" fill="#4ade80" />
+      
+      <text x="82" y="32" fill="#ffffff" font-size="22" font-weight="800" letter-spacing="0.5">+91 83***1015</text>
+      
+      <!-- UPI Verified Badge -->
+      <rect x="82" y="42" width="105" height="24" rx="6" fill="#16a34a" fill-opacity="0.2" stroke="#22c55e" stroke-width="1" />
+      <text x="90" y="58" fill="#4ade80" font-size="11" font-weight="700">✓ UPI Verified</text>
+    </g>
 
-        <!-- CHANGE NUMBER MODAL -->
-        <div id="changePhoneModal" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-md z-30 flex items-center justify-center p-6">
-            <div class="w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4 shadow-2xl">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-white">Update UPI Phone Number</h3>
-                    <button onclick="closeChangePhoneModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
-                </div>
-                <p class="text-xs text-slate-400">Naya UPI linked phone number dalein. Old account data safe rahega.</p>
-                <div>
-                    <div class="relative">
-                        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-semibold text-sm">+91</span>
-                        <input type="tel" id="newPhoneInput" maxlength="10" value="" placeholder="Enter new 10-digit number" class="w-full bg-slate-950 border border-slate-700 rounded-xl py-3 pl-12 pr-4 text-white text-sm font-semibold placeholder:text-slate-600 focus:outline-none focus:border-brand-500">
-                    </div>
-                </div>
-                <button type="button" onclick="sendChangePhoneOTP()" class="w-full bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-3 rounded-xl transition-all">
-                    Send OTP to New Number
-                </button>
-            </div>
-        </div>
+    <!-- Top Right: Win Amount Box -->
+    <g transform="translate(390, 0)">
+      <rect x="0" y="0" width="230" height="105" rx="20" fill="url(#cardGrad)" stroke="#22c55e" stroke-width="2" filter="url(#neonGlow)" />
+      
+      <text x="20" y="30" fill="#94a3b8" font-size="13" font-weight="700" letter-spacing="0.5">WIN AMOUNT</text>
+      <text x="20" y="68" fill="#ffffff" font-size="36" font-weight="800">₹50.00</text>
+      
+      <!-- Instant Withdraw Small Button -->
+      <rect x="135" y="68" width="80" height="26" rx="8" fill="url(#btnGrad)" />
+      <text x="175" y="85" fill="#052c65" font-size="11" font-weight="800" text-anchor="middle">Withdraw</text>
+    </g>
+  </g>
 
-        <!-- SCREEN 2: MAIN DASHBOARD -->
-        <div id="dashboardScreen" class="hidden flex-1 flex flex-col bg-slate-900 overflow-y-auto pb-6">
-            <div class="sticky top-0 bg-slate-900/90 backdrop-blur-md border-b border-slate-800/80 p-4 flex justify-between items-center z-10">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-brand-500/10 border border-brand-500/30 rounded-full flex items-center justify-center text-brand-400">
-                        <i class="fa-solid fa-user text-sm"></i>
-                    </div>
-                    <div>
-                        <span id="userPhoneDisplay" class="text-sm font-bold text-white block">+91 98***1234</span>
-                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-semibold">UPI Verified</span>
-                    </div>
-                </div>
-                <button onclick="openChangePhoneModal()" class="text-xs bg-slate-800 border border-slate-700 hover:border-slate-600 text-slate-300 py-1.5 px-3 rounded-lg flex items-center gap-1.5">
-                    <i class="fa-solid fa-pen-to-square text-[10px]"></i> Change
-                </button>
-            </div>
+  <!-- Divider Line -->
+  <line x1="90" y1="210" x2="710" y2="210" stroke="#1e293b" stroke-width="2" />
 
-            <div class="p-4 space-y-4">
-                <div class="bg-gradient-to-br from-slate-800 to-slate-800/80 border border-slate-700/80 rounded-2xl p-5 shadow-xl">
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-xs text-slate-400 font-medium">Available Cash Wallet</span>
-                        <span class="text-xs text-brand-400 bg-brand-400/10 px-2 py-0.5 rounded-full font-semibold">Ready to Transfer</span>
-                    </div>
-                    <div class="flex items-baseline gap-1">
-                        <span class="text-3xl font-extrabold text-white">₹<span id="walletBalance">0.00</span></span>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-slate-700/60 flex gap-2">
-                        <button onclick="claimPayout()" class="flex-1 bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-1.5">
-                            <i class="fa-solid fa-wallet"></i> Instant Withdraw to UPI
-                        </button>
-                    </div>
-                </div>
+  <!-- Title / Instruction Banner -->
+  <g transform="translate(90, 230)">
+    <text x="0" y="25" fill="#ffffff" font-size="24" font-weight="800">Watch Ads &amp; Claim Tickets</text>
+    <text x="0" y="48" fill="#64748b" font-size="14" font-weight="500">Complete daily ad tasks to win instant ticket rewards</text>
+  </g>
 
-                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4">
-                    <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-play text-brand-400"></i> Daily Task Ads
-                        </h3>
-                        <span class="text-xs text-slate-400"><span id="adsWatched">0</span>/5 Completed</span>
-                    </div>
-                    
-                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-4">
-                        <div id="adProgressBar" class="bg-brand-400 h-full w-0 transition-all duration-300"></div>
-                    </div>
+  <!-- LIST OF 5 TICKET CARDS -->
+  
+  <!-- Ticket Card 1 -->
+  <g transform="translate(90, 310)">
+    <rect x="0" y="0" width="620" height="120" rx="22" fill="url(#cardGrad)" stroke="url(#borderGrad)" stroke-width="2" />
+    <rect x="0" y="0" width="10" height="120" rx="5" fill="#22c55e" />
+    
+    <!-- Ticket Number Circle -->
+    <circle cx="50" cy="60" r="26" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <text x="50" y="68" fill="#4ade80" font-size="22" font-weight="800" text-anchor="middle">1</text>
+    
+    <!-- Ticket Text -->
+    <text x="95" y="52" fill="#ffffff" font-size="20" font-weight="700">1 Ad dekho aur jito</text>
+    <text x="95" y="82" fill="#22c55e" font-size="24" font-weight="800">₹10 ki ticket</text>
+    
+    <!-- Action Button -->
+    <rect x="440" y="38" width="155" height="48" rx="14" fill="url(#btnGrad)" />
+    <text x="517" y="68" fill="#030712" font-size="15" font-weight="800" text-anchor="middle">Watch Ad 1</text>
+  </g>
 
-                    <button onclick="watchAd()" id="watchAdBtn" class="w-full bg-slate-800 border border-slate-700 hover:border-brand-500/50 text-white font-semibold py-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-circle-play text-brand-400"></i> Watch Next Ad (Earn ₹10)
-                    </button>
-                </div>
-            </div>
-        </div>
+  <!-- Ticket Card 2 -->
+  <g transform="translate(90, 450)">
+    <rect x="0" y="0" width="620" height="120" rx="22" fill="url(#cardGrad)" stroke="url(#borderGrad)" stroke-width="2" />
+    <rect x="0" y="0" width="10" height="120" rx="5" fill="#22c55e" />
+    
+    <circle cx="50" cy="60" r="26" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <text x="50" y="68" fill="#4ade80" font-size="22" font-weight="800" text-anchor="middle">2</text>
+    
+    <text x="95" y="52" fill="#ffffff" font-size="20" font-weight="700">2 Ad dekho aur jito</text>
+    <text x="95" y="82" fill="#22c55e" font-size="24" font-weight="800">₹20 ki ticket</text>
+    
+    <rect x="440" y="38" width="155" height="48" rx="14" fill="url(#btnGrad)" />
+    <text x="517" y="68" fill="#030712" font-size="15" font-weight="800" text-anchor="middle">Watch Ad 2</text>
+  </g>
 
-    </div>
+  <!-- Ticket Card 3 -->
+  <g transform="translate(90, 590)">
+    <rect x="0" y="0" width="620" height="120" rx="22" fill="url(#cardGrad)" stroke="url(#borderGrad)" stroke-width="2" />
+    <rect x="0" y="0" width="10" height="120" rx="5" fill="#22c55e" />
+    
+    <circle cx="50" cy="60" r="26" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <text x="50" y="68" fill="#4ade80" font-size="22" font-weight="800" text-anchor="middle">3</text>
+    
+    <text x="95" y="52" fill="#ffffff" font-size="20" font-weight="700">3 Ad dekho aur jito</text>
+    <text x="95" y="82" fill="#22c55e" font-size="24" font-weight="800">₹30 ki ticket</text>
+    
+    <rect x="440" y="38" width="155" height="48" rx="14" fill="url(#btnGrad)" />
+    <text x="517" y="68" fill="#030712" font-size="15" font-weight="800" text-anchor="middle">Watch Ad 3</text>
+  </g>
 
-    <script>
-        let currentUserPhone = '';
-        let walletAmount = 0;
-        let watchedCount = 0;
-        let isChangingPhone = false;
+  <!-- Ticket Card 4 -->
+  <g transform="translate(90, 730)">
+    <rect x="0" y="0" width="620" height="120" rx="22" fill="url(#cardGrad)" stroke="url(#borderGrad)" stroke-width="2" />
+    <rect x="0" y="0" width="10" height="120" rx="5" fill="#22c55e" />
+    
+    <circle cx="50" cy="60" r="26" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <text x="50" y="68" fill="#4ade80" font-size="22" font-weight="800" text-anchor="middle">4</text>
+    
+    <text x="95" y="52" fill="#ffffff" font-size="20" font-weight="700">4 Ad dekho aur jito</text>
+    <text x="95" y="82" fill="#22c55e" font-size="24" font-weight="800">₹40 ki ticket</text>
+    
+    <rect x="440" y="38" width="155" height="48" rx="14" fill="url(#btnGrad)" />
+    <text x="517" y="68" fill="#030712" font-size="15" font-weight="800" text-anchor="middle">Watch Ad 4</text>
+  </g>
 
-        document.getElementById('loginPhone').value = '';
-        document.getElementById('ageConsent').checked = false;
+  <!-- Ticket Card 5 -->
+  <g transform="translate(90, 870)">
+    <rect x="0" y="0" width="620" height="120" rx="22" fill="url(#cardGrad)" stroke="url(#borderGrad)" stroke-width="2" />
+    <rect x="0" y="0" width="10" height="120" rx="5" fill="#f59e0b" />
+    
+    <circle cx="50" cy="60" r="26" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <text x="50" y="68" fill="#fbbf24" font-size="22" font-weight="800" text-anchor="middle">5</text>
+    
+    <text x="95" y="52" fill="#ffffff" font-size="20" font-weight="700">5 Ad dekho aur jito</text>
+    <text x="95" y="82" fill="#fbbf24" font-size="24" font-weight="800">₹50 ki ticket</text>
+    
+    <rect x="440" y="38" width="155" height="48" rx="14" fill="url(#goldGrad)" />
+    <text x="517" y="68" fill="#030712" font-size="15" font-weight="800" text-anchor="middle">Watch Ad 5</text>
+  </g>
 
-        function handleSendOTP() {
-            const phoneInput = document.getElementById('loginPhone');
-            const ageConsent = document.getElementById('ageConsent');
-            
-            const phone = phoneInput.value.trim();
-            const ageChecked = ageConsent.checked;
+  <!-- FOOTER NOTICE CARD -->
+  <g transform="translate(90, 1030)">
+    <rect x="0" y="0" width="620" height="100" rx="20" fill="#1e293b" fill-opacity="0.6" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4" />
+    
+    <!-- Warning Icon -->
+    <circle cx="45" cy="50" r="18" fill="#f59e0b" fill-opacity="0.2" />
+    <text x="45" y="56" fill="#fbbf24" font-size="18" font-weight="800" text-anchor="middle">!</text>
+    
+    <!-- Footer Text -->
+    <text x="80" y="44" fill="#fbbf24" font-size="16" font-weight="800" letter-spacing="0.3">DAILY LIMIT RULES</text>
+    <text x="80" y="68" fill="#94a3b8" font-size="15" font-weight="600">Limit: You can only buy 5 tickets ticket and amount</text>
+  </g>
 
-            if (phone.length !== 10 || isNaN(phone)) {
-                alert('Kripya apna sahi 10-digit ka mobile number dalein!');
-                return;
-            }
-            if (!ageChecked) {
-                alert('Aapko 18 saal se zyada hone ka confirmation checkbox tick karna hoga!');
-                return;
-            }
-
-            currentUserPhone = phone;
-            isChangingPhone = false;
-            document.getElementById('otpModalTitle').innerText = 'OTP Verification';
-            document.getElementById('displayOtpPhone').innerText = '+91 ' + phone;
-            document.getElementById('otpInput').value = '';
-            document.getElementById('otpModal').classList.remove('hidden');
-        }
-
-        function closeOtpModal() {
-            document.getElementById('otpModal').classList.add('hidden');
-        }
-
-        function verifyOTP() {
-            const otp = document.getElementById('otpInput').value.trim();
-            if (otp !== '1234') {
-                alert('Galat OTP! Correct test OTP hai: 1234');
-                return;
-            }
-
-            closeOtpModal();
-
-            if (isChangingPhone) {
-                document.getElementById('userPhoneDisplay').innerText = '+91 ' + currentUserPhone;
-                alert('Aapka UPI Phone Number safaltapurvak update ho gaya hai!');
-                isChangingPhone = false;
-            } else {
-                document.getElementById('loginScreen').classList.add('hidden');
-                document.getElementById('dashboardScreen').classList.remove('hidden');
-                document.getElementById('userPhoneDisplay').innerText = '+91 ' + currentUserPhone.slice(0,2) + '***' + currentUserPhone.slice(-4);
-            }
-        }
-
-        function openChangePhoneModal() {
-            document.getElementById('newPhoneInput').value = '';
-            document.getElementById('changePhoneModal').classList.remove('hidden');
-        }
-
-        function closeChangePhoneModal() {
-            document.getElementById('changePhoneModal').classList.add('hidden');
-        }
-
-        function sendChangePhoneOTP() {
-            const newPhone = document.getElementById('newPhoneInput').value.trim();
-            if (newPhone.length !== 10 || isNaN(newPhone)) {
-                alert('Kripya naya sahi 10-digit mobile number dalein!');
-                return;
-            }
-
-            currentUserPhone = newPhone;
-            isChangingPhone = true;
-            closeChangePhoneModal();
-            
-            document.getElementById('otpModalTitle').innerText = 'Verify New Number OTP';
-            document.getElementById('displayOtpPhone').innerText = '+91 ' + newPhone;
-            document.getElementById('otpInput').value = '';
-            document.getElementById('otpModal').classList.remove('hidden');
-        }
-
-        function watchAd() {
-            if (watchedCount >= 5) {
-                alert('Aaj ke sabhi 5 Ads poore ho chuke hain!');
-                return;
-            }
-
-            const btn = document.getElementById('watchAdBtn');
-            btn.disabled = true;
-            let timeLeft = 5;
-            btn.innerText = `Ad Playing... (${timeLeft}s)`;
-
-            const timer = setInterval(() => {
-                timeLeft--;
-                if (timeLeft > 0) {
-                    btn.innerText = `Ad Playing... (${timeLeft}s)`;
-                } else {
-                    clearInterval(timer);
-                    watchedCount++;
-                    walletAmount += 10;
-                    
-                    document.getElementById('walletBalance').innerText = walletAmount.toFixed(2);
-                    document.getElementById('adsWatched').innerText = watchedCount;
-                    document.getElementById('adProgressBar').style.width = (watchedCount * 20) + '%';
-
-                    btn.disabled = false;
-                    btn.innerHTML = `<i class="fa-solid fa-circle-play text-brand-400"></i> Watch Next Ad (Earn ₹10)`;
-                    alert('Shabaash! Aapne ₹10 jeet liye hain.');
-                }
-            }, 1000);
-        }
-
-        function claimPayout() {
-            if (walletAmount <= 0) {
-                alert('Pehle Ad dekhkar wallet mein balance earn karein!');
-                return;
-            }
-            alert(`Withdrawal request successful! ₹${walletAmount} aapke UPI Linked Number (${currentUserPhone}) par transfer kiye ja rahe hain.`);
-            walletAmount = 0;
-            document.getElementById('walletBalance').innerText = '0.00';
-        }
-    </script>
-</body>
-</html>
+  <!-- Bottom Navigation Indicator (Mobile Bar) -->
+  <rect x="330" y="1285" width="140" height="5" rx="2.5" fill="#475569" />
+</svg>
+```
